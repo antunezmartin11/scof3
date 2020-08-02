@@ -150,7 +150,7 @@
                   <div class="progress-bar" style="width: 70%"></div>
                 </div>
                     <span class="progress-description">
-                      <a href="" style="color: white;">Ver/Buscar Historias</a>
+                      <a href="{{url('Historia')}}" style="color: white;">Ver/Buscar Historias</a>
                     </span>
               </div>
               <!-- /.info-box-content -->
