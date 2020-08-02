@@ -171,7 +171,7 @@
                 </div>
                     <span class="progress-description">
                       
-                      <a href="" style="color: white;">Ver Opciones</a>
+                      <a href="{{url('ParteDiario')}}" style="color: white;">Ver Opciones</a>
                     </span>
               </div>
               <!-- /.info-box-content -->
