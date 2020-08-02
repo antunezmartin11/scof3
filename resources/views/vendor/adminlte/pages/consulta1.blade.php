@@ -402,7 +402,7 @@
                 <label class="control-label col-md-1">Diagnostico</label>
                 <div class="col-md-7">
                   <?php 
-                   $cie=DB::table('cie')->where('cod_cat','like','%h%')->get();
+                   $cie=DB::table('cie')->get();
 
                    ?> 
                    <select name="diag1" id="diag1" class="form-control select2" style="width: 100%;" onchange="cambiocie(1);">
