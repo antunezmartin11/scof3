@@ -69,8 +69,8 @@
                 <a href="#"><i class='fa fa-link'></i> <span>Pagos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{url('Pagos')}}">Verificacion de Pagos</a></li>
-                    <li><a href="{{url('compania')}}">Modificar Pagos</a></li>
-                    <li><a href="{{url('Costos')}}">Generar Report1es</a></li> 
+                    <li><a href="{{url('Costos')}}">Modificar Pagos</a></li>
+                    <!--<li><a href="{{url('Costos')}}">Generar Report1es</a></li> -->
                     <li><a href="{{url('Consolidado')}}">Consolidado</a></li>
                 </ul>               
             </li>      
@@ -137,6 +137,9 @@
                 </ul>               
             </li>                                        
         </ul><!-- /.sidebar-menu -->
+        <div class="" id="campoHistorias" style="background-color: white;">
+            <h4>Historias Registradas</h4>
+        </div>
         @else
         <ul class="sidebar-menu">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
