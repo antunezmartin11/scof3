@@ -124,7 +124,7 @@
               <div class="info-box-content">
 
                 <span class="info-box-text">Consulta</span>
-                <span class="info-box-number"><?php $cc=DB::table('atencion')->where('fecha','=',Carbon\Carbon::now()->toDateString())->where('estado','=','Pendiente')->count(); echo $cc; ?></span>
+                <span class="info-box-number"><?php $cc=DB::table('consulta')->count(); echo $cc; ?></span>
 
                 <div class="progress">
                   <div class="progress-bar" style="width: 70%"></div>
