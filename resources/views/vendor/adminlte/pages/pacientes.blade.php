@@ -92,7 +92,7 @@
                         <option value="CONSULTA" selected>Consulta</option>
                         <option value="MEDIDA DE LA VISTA">Medida de la vista</option>
                         <option value="SCTR">SCTR</option>
-                        <option value="EVALUACION PREVENTIVA">Medida de la vista</option>
+                        <option value="EVALUACION PREVENTIVA">Evaluacion Preventiva</option>
                       </select>
                     </div>
                     <div class="form-group col-md-3">
