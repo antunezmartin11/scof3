@@ -1,6 +1,6 @@
 <style>
     table{
-        background: #9AD5F3;
+        background: #A5F7EF;
     }
 </style>
 <table class="table  table-bordered table-hover" id="tblD">
@@ -27,8 +27,8 @@
                 <td>{{$n}}</td>
                 <td>{{$r->nombre}}</td>
                 <td align="center">{{$r->ruc}}</td>
-                <td>S/. {{$r->copagoFijo}}</td>
-                <td>{{$r->copagoVariable}}%</td>
+                <td align="center">S/. {{$r->copagoFijo}}</td>
+                <td align="center">{{$r->copagoVariable}}%</td>
                 <?php 
                 $ase=DB::table('tipo_seguro')->where('id','=',$r->tipo_seguro_id)->get();
                  ?>
