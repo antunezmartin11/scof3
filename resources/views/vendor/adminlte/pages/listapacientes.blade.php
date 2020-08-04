@@ -18,7 +18,6 @@
     <tbody id="filas">
     	@php
             $n=0;
-            
     	@endphp
     	@foreach($respuesta as $r)
         <tr style="background-color:white;">
@@ -53,7 +52,7 @@
                 
                 @endforeach            
             @endif
-            @endphp
+      
               
             <td><a href="#" class="btn btn-sm btn-success" onclick="AgregarParaConsulta({{$r->id}})"><i class="glyphicon glyphicon-hand-up"></i></a>&nbsp;<a id="btnHistorias" class="btn btn-sm btn-info" data-target="#modalHistoria" data-toggle="modal" onclick="historiasAntes({{$r->id}})"><i class="fa fa-file-text"></i></a>&nbsp; <a href="#" class="btn bg-teal btn-sm"  onclick="CargarInputs({{$json}})" id="btnCargar"><i class="fa fa-edit" id="iedit"></i></a>&nbsp;<a class="btn btn-danger btn-sm" onclick="eliminarPa({{$r->id}})"><i class="fa fa-trash"></i></a> </td>                
         </tr>

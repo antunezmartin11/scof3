@@ -489,43 +489,42 @@
                   <input type="text" class="form-control input-sm " id="ocultore" disabled>        
                   <input type="text" class="form-control input-sm" disabled value="OD" style="text-align: center;">
                   <input type="text" class="form-control input-sm" disabled value="OI" style="text-align: center;">
-                  <input type="text" class="form-control input-sm" disabled value="OD Cerca">
-                  <input type="text" class="form-control input-sm" disabled value="OI Cerca">                                     
+                  <input type="text" class="form-control input-sm" disabled value="Cerca">                                  
                 </div>
                 <div class="col-md-2">
                   <input type="text" class="form-control input-sm" disabled value="ESFERA" style="text-align: center;">
                   <input type="text" class="form-control input-sm" id="odesfera" name="odesfera">
                   <input type="text" class="form-control input-sm" id="oiesfera" name="oiesfera">
                   <input type="text" class="form-control input-sm" id="odesferaC" name="odesferaC">
-                  <input type="text" class="form-control input-sm" id="oiesferaC" name="oiesferaC">                             
+                                          
                 </div>
                 <div class="col-md-2">
                   <input type="text" class="form-control input-sm" disabled value="CILINDRO" style="text-align: center;">
                   <input type="text" class="form-control input-sm" id="odcilindro" name="odcilindro">
                   <input type="text" class="form-control input-sm" id="oicilindro" name="oicilindro">
                   <input type="text" class="form-control input-sm" id="odcilindroC" name="odcilindroC">
-                  <input type="text" class="form-control input-sm" id="oicilindroC" name="oicilindroC">                             
+                                             
                 </div>
                 <div class="col-md-2">
                   <input type="text" class="form-control input-sm" disabled value="EJE" style="text-align: center;">
                   <input type="text" class="form-control input-sm" id="odeje" name="odeje">
                   <input type="text" class="form-control input-sm" id="oieje" name="oieje">
                   <input type="text" class="form-control input-sm" id="odejeC" name="odejeC">
-                  <input type="text" class="form-control input-sm" id="oiejeC" name="oiejeC">                   
+                                  
                 </div>
                 <div class="col-md-2">
                   <input type="text" class="form-control input-sm" disabled value="AV" style="text-align: center;">
                   <input type="text" class="form-control input-sm" id="odav" name="odav">
                   <input type="text" class="form-control input-sm" id="oiav" name="oiav">
                   <input type="text" class="form-control input-sm" id="odavC" name="odavC">
-                  <input type="text" class="form-control input-sm" id="oiavC" name="oiavC">                             
+                                            
                 </div>
                 <div class="col-md-2">
                   <input type="text" class="form-control input-sm" disabled value="DIP" style="text-align: center;">
                   <input type="text" class="form-control input-sm" id="oddip" name="oddip">
                   <input type="text" class="form-control input-sm" id="oidip" name="oidip">
                   <input type="text" class="form-control input-sm" id="oddipC" name="oddipC">
-                  <input type="text" class="form-control input-sm" id="oidipC" name="oidipC">                             
+                                             
                 </div>                                
               </div>  
               <div class="col-md-12">
