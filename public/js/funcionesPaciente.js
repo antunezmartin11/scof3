@@ -601,7 +601,6 @@ function CargarInputs(json){
             cargarCompanias(t);
         });
         $('#compania').val(json.idcom)
-        console.log(json.idcom)
         $('#btnCargar').prop('class', "btn btn-warning btn-sm");
         $('#iedit').prop('class', 'fa fa-save')
         $('#btnCargar').prop('id', "btnUp");
