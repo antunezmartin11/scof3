@@ -142,17 +142,20 @@ window.addEventListener('load', function(){
     pasartab('oiejeC','odavC')
     pasartab('oiavC','oddipC')
     pasartab('oidipC','btnGu') 
+    //Pasar con tab para los farmacos, unidades y indicaciones
     pasartab('far1','far4')
-    pasartab('uni1','uni4')   
+    pasartab('unid1','unid4')
+
     pasartab('ind1','far1')
-    pasartab('far2','uni1')
-    pasartab('uni2','ind1')
+    pasartab('far2','unid1')
+    pasartab('unid2','ind1')
+
     pasartab('ind2','far2')
-    pasartab('far3','uni2')
-    pasartab('uni3','ind2')
+    pasartab('far3','unid2')
+    pasartab('unid3','ind2')
     pasartab('ind3','far3')
-    pasartab('far4','uni3')
-    pasartab('uni4','ind3')
+    pasartab('far4','unid3')
+    pasartab('unid4','ind3')
     //Pasar al cie
     pasartab('txtoi','txtoi')
  }, false);
