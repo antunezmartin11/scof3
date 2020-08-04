@@ -362,10 +362,10 @@
                       <input type="hidden" value="{{$g->id}}" id="idcie{{$g->rownum}}">
                      @endforeach
                      @foreach ($tr as $tr)
-                      <input type="text" value="{{$tr->farmaco}}" id="fr{{$tr->rownumt}}">
-                      <input type="text" value="{{$tr->unidad}}" id="un{{$tr->rownumt}}">
-                      <input type="text" value="{{$tr->indicaciones}}" id="in{{$tr->rownumt}}">
-                      <input type="text" value="{{$tr->id}}" id="idt{{$tr->rownumt}}">
+                      <input type="hidden" value="{{$tr->farmaco}}" id="fr{{$tr->rownumt}}">
+                      <input type="hidden" value="{{$tr->unidad}}" id="un{{$tr->rownumt}}">
+                      <input type="hidden" value="{{$tr->indicaciones}}" id="in{{$tr->rownumt}}">
+                      <input type="hidden" value="{{$tr->id}}" id="idt{{$tr->rownumt}}">
                      @endforeach
                      @foreach ($pc as $pc)
                       <input type="hidden" value="{{$pc->procedimiento}}" id="pc{{$pc->rownump}}">

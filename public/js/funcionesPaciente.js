@@ -589,6 +589,7 @@ function CargarInputs(json){
         $('#nombre').val(json.nombre)
         $('#direccion').val(json.direccion)
         $('#fecnac').val(json.fecnac)
+        $('#dni').val(json.dni)
         $('#sexo').val(json.sexo)
         $('#telefono').val(json.telefono)
         $('#email').val(json.email)
