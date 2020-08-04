@@ -75,8 +75,9 @@
               @endphp
 
             <tr style="background-color: white; font-size: 10px;">
+                dd($l)
                 <td style="text-align: center;">{{$n}}</td>
-                <td style="text-align: center;">{{$l->idp}}</td>
+                <td style="text-align: center;">{{$l->dni}}</td>
                 <td style="text-align: center;">{{$l->nconsulta}}</td>
                 <td>{{$l->nombre}}</td>
                 <td style="text-align: center;">{{$l->sexo}}</td>

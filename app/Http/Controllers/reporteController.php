@@ -12,14 +12,14 @@ class reporteController extends Controller
     }
     public function listaDia(){
     	$ff='';
-    	$li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
+    	$li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad,p.dni, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
             where p.id=c.paciente_id and c.id=pm.consulta_id and dp.consulta_id=c.id and 
             p.tipo_seguro_id=ts.id and c.fechacon=curdate() order by c.id asc');
     	return view('vendor.adminlte.pages.reportes.listadia',compact('li','ff'));
     }
     public function diaGenPDF(){
     	$fc=Carbon::now()->toDateString();  	
-    	$li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
+    	$li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad, p.sexo,pm.planmedico,ts.nombre_aseguradora,p.dni, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
             where p.id=c.paciente_id and c.id=pm.consulta_id and dp.consulta_id=c.id and 
             p.tipo_seguro_id=ts.id and c.fechacon=:fc order by c.id asc',['fc'=>$fc]);
         $vista=view('vendor.adminlte.pages.reportes.pdfDiaGen', compact('li'));
@@ -35,12 +35,12 @@ class reporteController extends Controller
     		$ff=$request->ff;
     		$ti=$request->t;
     		if($ti==0){
-		    	$li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
+		    	$li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad,p.dni, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
                 where p.id=c.paciente_id and c.id=pm.consulta_id and dp.consulta_id=c.id and 
                 p.tipo_seguro_id=ts.id and c.fechacon between :fin and :ffin order by c.id asc',['fin'=>$fi,'ffin'=>$ff]);
 		    	return view('vendor.adminlte.pages.reportes.listadia',compact('li'));
     		}else{
-		    	$li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
+		    	$li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad,p.dni, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
                     where p.id=c.paciente_id and c.id=pm.consulta_id and dp.consulta_id=c.id and 
             p.tipo_seguro_id=ts.id and c.fechacon between :fin and :ffin and ts.id=:tp order by c.id asc',['fin'=>$fi,'ffin'=>$ff,'tp'=>$ti]);
 		    	return view('vendor.adminlte.pages.reportes.listadia',compact('li'));    			
@@ -52,7 +52,7 @@ class reporteController extends Controller
     //Generar el pdf del reporte por un rango de fechas
     public function ReporteDFF($fi, $ff,$ti){        
     	if($ti==0){
-		    $li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
+		    $li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad,p.dni, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
                 where p.id=c.paciente_id and c.id=pm.consulta_id and dp.consulta_id=c.id and 
                     p.tipo_seguro_id=ts.id and c.fechacon between :fin and :ffin order by c.id asc',['fin'=>$fi,'ffin'=>$ff]);		
             $vista=view('vendor.adminlte.pages.reportes.pdfDiaGen', compact('li','fi','ff','ti
@@ -61,7 +61,7 @@ class reporteController extends Controller
             $pdf->loadHTML($vista);        
             return $pdf->stream('Reporte por fechas');
     	}else{
-		    $li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
+		    $li=DB::select('select p.id as idp,c.nconsulta,p.nombre, p.edad,p.dni, p.sexo,pm.planmedico,ts.nombre_aseguradora, c.fechacon  from consulta c, paciente p, planmedico pm, datoprevio dp,tipo_seguro ts
                 where p.id=c.paciente_id and c.id=pm.consulta_id and dp.consulta_id=c.id and 
                 p.tipo_seguro_id=ts.id and c.fechacon between :fin and :ffin and ts.id=:tp order by c.id asc',['fin'=>$fi,'ffin'=>$ff,'tp'=>$ti]);	
             $vista=view('vendor.adminlte.pages.reportes.pdfDiaGen', compact('li','fi','ff','ti'));
@@ -79,7 +79,7 @@ class reporteController extends Controller
     //para obtener los datos del reporte por diagnostico
     public function genRerporteDiagnostico(Request $request){
         if($request->ajax()){
-            $ddg=DB::select('select p.id, c.nconsulta, p.nombre, pm.planmedico, c.fechacon, d.diagnostico, d.cie from paciente p, consulta c, planmedico pm, datoprevio dp, diagnostico d
+            $ddg=DB::select('select p.id, c.nconsulta, p.nombre, pm.planmedico, p.dni, c.fechacon, d.diagnostico, d.cie from paciente p, consulta c, planmedico pm, datoprevio dp, diagnostico d
                 where p.id=c.paciente_id and  c.id=pm.consulta_id and c.id=dp.consulta_id and c.id=d.consulta_id and
                 c.fechacon between :fi and :ff order by c.id asc ',['fi'=>$request->fi,'ff'=>$request->ff]);
             return view('vendor.adminlte.pages.reportes.diagnostico.listaresumendiagnostico',compact('ddg'));
@@ -89,7 +89,7 @@ class reporteController extends Controller
     }
     //Generar el archivo PDF de la consulta generadad
     public function printReportediagnosticoR($feI,$feF){
-        $ddg=DB::select('select p.id, c.nconsulta, p.nombre, pm.planmedico, c.fechacon, d.diagnostico, d.cie from paciente p, consulta c, planmedico pm, datoprevio dp, diagnostico d
+        $ddg=DB::select('select p.id, c.nconsulta, p.nombre, pm.planmedico, p.dni, c.fechacon, d.diagnostico, d.cie from paciente p, consulta c, planmedico pm, datoprevio dp, diagnostico d
                 where p.id=c.paciente_id and  c.id=pm.consulta_id and c.id=dp.consulta_id and c.id=d.consulta_id and
                 c.fechacon between :fi and :ff order by c.id asc ',['fi'=>$feI,'ff'=>$feF]);
         $vista=view('vendor.adminlte.pages.reportes.diagnostico.pdfReporteDiag', compact('ddg','feI','feF'));
@@ -143,7 +143,7 @@ class reporteController extends Controller
 
     //Generar la tabla con el resumen general
     public function resumenprocedimiento(Request $request){
-        $rp=DB::select('select p.id, c.nconsulta, p.nombre, p.edad, p.sexo, pr.procedimiento from consulta c, paciente p, procedimientos pr, datoprevio dp
+        $rp=DB::select('select p.id, c.nconsulta, p.nombre, p.edad, p.sexo,p.dni, pr.procedimiento from consulta c, paciente p, procedimientos pr, datoprevio dp
             where p.id=c.paciente_id and pr.consulta_id=c.id and dp.consulta_id=c.id and c.fechacon between :fi and :ff ',['fi'=>$request->fi, 'ff'=>$request->ff]);
         return view('vendor.adminlte.pages.reportes.procedimiento.listaprocedimientoresumen',compact('rp'));
     }
@@ -155,7 +155,7 @@ class reporteController extends Controller
     }
     //Generar el PDF de resumen general de procedimientos
     public function PDFResumenPro($fi, $ff){
-        $rp=DB::select('select p.id, c.nconsulta, p.nombre, p.edad, p.sexo, pr.procedimiento from consulta c, paciente p, procedimientos pr, datoprevio dp
+        $rp=DB::select('select p.id, c.nconsulta, p.nombre, p.edad, p.sexo,p.dni, pr.procedimiento from consulta c, paciente p, procedimientos pr, datoprevio dp
             where p.id=c.paciente_id and pr.consulta_id=c.id and dp.consulta_id=c.id and c.fechacon between :fi and :ff order by c.id',['fi'=>$fi, 'ff'=>$ff]);
         $vista=view('vendor.adminlte.pages.reportes.procedimiento.pdfresumenprocedimiento',compact('rp','fi','ff'));
         $pdf=\App::make('dompdf.wrapper');
