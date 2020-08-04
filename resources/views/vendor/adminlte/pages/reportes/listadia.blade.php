@@ -22,7 +22,7 @@
                 @endphp
                 <tr style="background-color: white;">
                    <td>{{$n}}</td>
-                   <td>{{$l->idp}}</td>
+                   <td>{{$l->dni}}</td>
                    <td>{{$l->nconsulta}}</td>
                    <td>{{$l->nombre}}</td>
                    <td>{{$l->sexo}}</td>

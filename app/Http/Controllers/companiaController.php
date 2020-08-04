@@ -42,7 +42,7 @@ class companiaController extends Controller
         }
     }
     public function cargarCompania(){
-        $lista=compania::all();
+        $lista=compania::join('costo_compania','compania.id','=','costo_compania.id_compania')->get();
         return view('vendor.adminlte.pages.listaCompania', compact('lista'));
     }    
     public function modificarAseguradora(Request $request){        

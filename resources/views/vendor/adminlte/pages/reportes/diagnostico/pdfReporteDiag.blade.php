@@ -61,7 +61,7 @@
           @endphp
           <tr style="font-size: 10px;">
             <td style="text-align: center;">{{$nn}}</td>
-            <td style="text-align: center;">{{$d->id}}</td>
+            <td style="text-align: center;">{{$d->dni}}</td>
             <td style="text-align: center;">{{$d->nconsulta}}</td>
             <td>{{$d->nombre}}</td>
             <td style="text-align: center;">{{$d->planmedico}}</td>

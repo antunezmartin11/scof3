@@ -27,7 +27,7 @@
 			@endphp
 			<tr style="background-color: white;">
 				<td>{{$nn}}</td>
-				<td>{{$d->id}}</td>
+				<td>{{$d->dni}}</td>
 				<td>{{$d->nombre}}</td>
 				<td>{{$d->edad}}</td>			
 				<td>{{$d->sexo}}</td>				

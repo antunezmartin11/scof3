@@ -1,14 +1,16 @@
 <style>
     table{
-        background: #B7FDC9;
+        background: #9AD5F3;
     }
 </style>
-<table class="table table-striped table-bordered table-hover" id="tblD">
+<table class="table  table-bordered table-hover" id="tblD">
     <thead>
         <tr align="center">
             <th >N°</th>
             <th >Nombre</th>
             <th >RUC</th>
+            <th>Co. Fijo</th>
+            <th>Co. Variable</th>
             <th >Aseguradora</th>
             <th >Acciones</th>
         </tr>                        
@@ -25,6 +27,8 @@
                 <td>{{$n}}</td>
                 <td>{{$r->nombre}}</td>
                 <td align="center">{{$r->ruc}}</td>
+                <td>S/. {{$r->copagoFijo}}</td>
+                <td>{{$r->copagoVariable}}%</td>
                 <?php 
                 $ase=DB::table('tipo_seguro')->where('id','=',$r->tipo_seguro_id)->get();
                  ?>

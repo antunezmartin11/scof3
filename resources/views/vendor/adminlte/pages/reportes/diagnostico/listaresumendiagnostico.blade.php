@@ -30,7 +30,7 @@
 			@endphp
 			<tr>
 				<td>{{$nn}}</td>
-				<td>{{$d->id}}</td>
+				<td>{{$d->dni}}</td>
 				<td>{{$d->nconsulta}}</td>
 				<td>{{$d->nombre}}</td>
 				<td>{{$d->planmedico}}</td>
