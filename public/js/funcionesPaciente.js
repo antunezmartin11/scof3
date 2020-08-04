@@ -582,7 +582,6 @@ function listaCompania(id){
 
 //Funcion para actualizar los datos del pacientes 
 function CargarInputs(json){
-    console.log(json)
     id=json.id
     token=$('#token').val()
     if ($('#btnCargar').length) {//verifica si el boton esta en cargar o actualizar
