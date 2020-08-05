@@ -303,6 +303,7 @@ function asignarConsulta(id){
             type: 'GET',
             headers:{'X-CSRF-TOKEN': token},
             success: function(data){
+
                 $('#nombrePaciente').val(data[0].nombre)
                 $('#idPaci').val(data[0].id)
                 $('#idan').val(ida)
@@ -789,12 +790,7 @@ function asignarConsulta(id){
             odesferaC=''
         }else{
             odesferaC=odesferaC
-        }    
-        if(oiesferaC.length==0){
-            oiesferaC=''
-        }else{
-            oiesferaC=oiesferaC
-        }          
+        }            
         if(odcilindro.length==0){
             odcilindro=''
         }else{
@@ -809,12 +805,7 @@ function asignarConsulta(id){
             odcilindroC=''
         }else{
             odcilindroC=odcilindroC
-        }    
-        if(oicilindroC.length==0){
-            oicilindroC=''
-        }else{
-            oicilindroC=oicilindroC
-        }          
+        }             
         if(odeje.length==0){
             odeje=''
         }else{
@@ -829,12 +820,7 @@ function asignarConsulta(id){
             odejeC=''
         }else{
             odejeC=odejeC
-        }    
-        if(oiejeC.length==0){
-            oiejeC=''
-        }else{
-            oiejeC=oiejeC
-        }        
+        }           
         if(odav.length==0){
             odav=''
         }else{
@@ -849,12 +835,7 @@ function asignarConsulta(id){
             odavC=''
         }else{
             odavC=odavC
-        }    
-        if(oiavC.length==0){
-            oiavC=''
-        }else{
-            oiavC=oiavC
-        }          
+        }           
         if(oddip.length==0){
             oddip=''
         }else{
@@ -869,12 +850,7 @@ function asignarConsulta(id){
             oddipC=''
         }else{
             oddipC=oddipC
-        }      
-        if(oidipC.length==0){
-            oidipC=''
-        }else{
-            oidipC=oidipC
-        }                                                                                                                      
+        }                                                                                                                          
         //para la tabla de procedimientos
         if( $('#FonOjo').prop('checked')) {
             FonOjo=$('#FonOjo').val()    
@@ -1000,16 +976,13 @@ function asignarConsulta(id){
                     //para la tabla de refraccion
                     odesfera:odesfera,
                     oiesfera:oiesfera,
-                    odesferaC:odesferaC,
-                    oiesferaC:oiesferaC,
+                    odesferaC:odesferaC,             
                     odcilindro:odcilindro,
                     oicilindro:oicilindro,
-                    odcilindroC:odcilindroC,
-                    oicilindroC:oicilindroC,
+                    odcilindroC:odcilindroC,          
                     odeje:odeje,
                     oieje:oieje,
-                    odejeC:odejeC,
-                    oiejeC:oiejeC,
+                    odejeC:odejeC,            
                     odav:odav,
                     oiav:oiav,
                     odavC:odavC,
@@ -1017,7 +990,6 @@ function asignarConsulta(id){
                     oddip:oddip,
                     oidip:oidip,
                     oddipC:oddipC,
-                    oidipC:oidipC,
                     //para la tabla de procedimientos
                     FonOjo:FonOjo,
                     chkTono:chkTono,
