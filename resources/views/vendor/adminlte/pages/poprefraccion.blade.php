@@ -66,6 +66,13 @@
 		position: absolute;
 		max-width: 20%;		
 		left: 1%;
+	}
+	#imgfirma{
+		height:150px;
+		width:250px;
+		position: absolute;
+		top: 220px;
+		left: 550px;
 	}	
 </style>
   @if(Auth::user()->tipo_users_id==1 || Auth::user()->tipo_users_id==2)
@@ -240,6 +247,7 @@
 				<input type="text" id="anC" class="fH" value="<?php echo $an; ?>">				
 			</div>
 	</div>
+	<img src="{{asset('img/firma.jpg')}}" alt="Firma" id="imgfirma">
 	<div class="pie">
 		<table id="footr" style="border-collapse: collapse; margin: 0 auto; width: 80%;">
 				<tr>

@@ -104,6 +104,13 @@
 	#lineaF{
 
 	}
+	#imgfirma{
+		top:470px;
+		position: absolute;
+		left: 520px;
+		height: 100px;
+		width: 250px; 
+	}
 </style>
   @if(Auth::user()->tipo_users_id==1 || Auth::user()->tipo_users_id==2)
 	@foreach ($con as $c)
@@ -114,7 +121,7 @@
 		 ?>
 			<div class="rect">
 				
-				<table class="tb" style="margin: 0 auto;">
+				<table class="tb" style="margin: 0 auto; ">
 					<thead>
 					<tr>
 						<td style="text-align: center; font-size: 40px; font-family: 'Brush Script MT'; font-style: oblique; letter-spacing: 1px;"><strong>Bernardo Gamarra Benites</strong></td>
@@ -181,7 +188,7 @@
 					</tbody>
 				</table>
 			</div>	
-		
+			<img src="{{asset('img/firma.jpg')}}" alt="" id="imgfirma">
 
 			<label id="fecha" style="font-size: 16px;">{{$c->fechacon}}</label><br>
 			<input type="text" value="FECHA" id="etFecha" style="font-size: 16px">

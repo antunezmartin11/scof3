@@ -71,10 +71,7 @@ function guardart(event) {//ejecutar la funciona de editar con enter
     if(event.keyCode===13){
         nc=$('#hcP').val()   
         idpac=$('#nhis').val() 
-        editarHistoria()      
-        c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=1008,scrollbars=NO")
-        a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=620,height=650,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
-        b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=595,height=420,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');                        
+        editarHistoria()                       
     }   
 };
 function buscarHtr(e){//Ejecuatr la funciona de buscar paciente con enter
@@ -196,7 +193,7 @@ function desDNI(){//Deshabilita el campo DNI cuanto esta en el campo nombre
         
         d=$("#diag"+numc).val()
         if(d==red[0].desc_enf){
-            console.log('Ya se cambio ')
+            //console.log('Ya se cambio ')
         }else{
             $("#diag"+numc).val(red[0].desc_enf).change()                    
         }
@@ -339,18 +336,20 @@ function EliminarTratamiento(idt){
 	    }
 	});	
 }
-function AgregarTratamiento(tra, idc){
+function AgregarTratamiento(far, uni, ind, idc){
     token=$('#token').val()
 	$.ajax({
 	    url: '/AgregarTratamiento',
 	    type: 'POST',
 	    headers: {'X-CSRF-TOKEN': token},
 	    data:{
-	        tra: tra, 
+            far:far,
+            uni: uni,
+	        ind: ind, 
 	        idc: idc
 	    }, 
 	    success: function (respt) {    	    	
-	    	console.log(respt.mensaje)
+	    	console.log(respt)
 	    },
 	    error: function () {
 	        console.log('el error esta aca')
@@ -368,7 +367,7 @@ function UpdateTratamientos(idt,fr,un,i){
 	}else{
 		if(fr.length>1){
 			idcon=$('#idconsulta').val()
-			AgregarTratamiento(fr,idcon)
+			AgregarTratamiento(fr, un, i,idcon)
 		}
 	}
 }
@@ -646,23 +645,18 @@ function editarHistoria(){
         odesfera=$('#odesfera').val()
         oiesfera=$('#oiesfera').val()
         odesferaC=$('#odesferaC').val()
-        oiesferaC=$('#oiesferaC').val()
         odcilindro=$('#odcilindro').val()
         oicilindro=$('#oicilindro').val()
         odcilindroC=$('#odcilindroC').val()        
-        oicilindroC=$('#oicilindroC').val()  
         odeje=$('#odeje').val()
         oieje=$('#oieje').val()
         odejeC=$('#odejeC').val()
-        oiejeC=$('#oiejeC').val()
         odav=$('#odav').val()
         oiav=$('#oiav').val()
         odavC=$('#odavC').val()
-        oiavC=$('#oiavC').val()
         oddip=$('#oddip').val()
         oidip=$('#oidip').val()
         oddipC=$('#oddipC').val()
-        oidipC=$('#oidipC').val()
         if(odesfera.length==0){
             odesfera=''
         }else{
@@ -677,12 +671,7 @@ function editarHistoria(){
             odesferaC=''
         }else{
             odesferaC=odesferaC
-        }    
-        if(oiesferaC.length==0){
-            oiesferaC=''
-        }else{
-            oiesferaC=oiesferaC
-        }          
+        }             
         if(odcilindro.length==0){
             odcilindro=''
         }else{
@@ -697,12 +686,7 @@ function editarHistoria(){
             odcilindroC=''
         }else{
             odcilindroC=odcilindroC
-        }    
-        if(oicilindroC.length==0){
-            oicilindroC=''
-        }else{
-            oicilindroC=oicilindroC
-        }          
+        }              
         if(odeje.length==0){
             odeje=''
         }else{
@@ -717,12 +701,7 @@ function editarHistoria(){
             odejeC=''
         }else{
             odejeC=odejeC
-        }    
-        if(oiejeC.length==0){
-            oiejeC=''
-        }else{
-            oiejeC=oiejeC
-        }        
+        }         
         if(odav.length==0){
             odav=''
         }else{
@@ -737,12 +716,7 @@ function editarHistoria(){
             odavC=''
         }else{
             odavC=odavC
-        }    
-        if(oiavC.length==0){
-            oiavC=''
-        }else{
-            oiavC=oiavC
-        }          
+        }             
         if(oddip.length==0){
             oddip=''
         }else{
@@ -757,12 +731,7 @@ function editarHistoria(){
             oddipC=''
         }else{
             oddipC=oddipC
-        }      
-        if(oidipC.length==0){
-            oidipC=''
-        }else{
-            oidipC=oidipC
-        }     
+        }          
 //incio del ajax
             $.ajax({
                 url: '../editHistoria',
@@ -823,27 +792,23 @@ function editarHistoria(){
                     odesfera:odesfera,
                     oiesfera:oiesfera,
                     odesferaC:odesferaC,
-                    oiesferaC:oiesferaC,
                     odcilindro:odcilindro,
                     oicilindro:oicilindro,
                     odcilindroC:odcilindroC,
-                    oicilindroC:oicilindroC,
                     odeje:odeje,
                     oieje:oieje,
                     odejeC:odejeC,
-                    oiejeC:oiejeC,
                     odav:odav,
                     oiav:oiav,
                     odavC:odavC,
-                    oiavC:oiavC,
                     oddip:oddip,
                     oidip:oidip,
                     oddipC:oddipC,
-                    oidipC:oidipC
                     //para la tabla de procedimientos
                 },                
                 success: function(r){
                 	if(r=='Actualizado'){
+                        
                 		editarDiagnostico(function (re1){
                 			if(re1=='Actualizado'){
                                /* UpTra(function (r0){
@@ -853,17 +818,30 @@ function editarHistoria(){
                                 });   */  
                                 
                                 swal('Actualizado','Se Guardaron los cambios','success')
+                                c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
+                                a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
+                                b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO'); 
+
                 			}else{
                                 console.log('No se actualizo el diagnostico')
                                 swal('Actualizado','Se Guardaron los cambios','success')
+                            
+                                c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
+                                a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
+                                b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO'); 
                             }
+                            UpTra()
                 		});      
-                        UpTra()                   
+                                          
                 	}else{
                 		editarDiagnostico(function (re1){
                 			if(re1=='Actualizado'){
-                				swal('Actualizado','Los cambios se guardaron','success')			
+                                swal('Actualizado','Los cambios se guardaron!!','success')	
+                                c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
+                                a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
+                                b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO'); 		
                 			}else{
+                                
                                 alertify.error('No se registraron cambios en el diagnostico')
                             }
                 		});  

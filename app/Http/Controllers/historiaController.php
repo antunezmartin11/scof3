@@ -15,6 +15,7 @@ use App\Modelos\atencion;
 use App\Modelos\examen1;
 use App\Modelos\examen2;
 use App\Modelos\paciente;
+use App\Modelos\farmaco;
 
 class historiaController extends Controller
 {
@@ -140,7 +141,7 @@ class historiaController extends Controller
     }
 
     public function eliminarTratamiento(Request $request){
-        $et=tratamiento::FindOrFail($request->idt);
+        $et=farmaco::FindOrFail($request->idt);
         $elt=$et->delete();
         if ($elt) {
             return Response()->json(['mensaje'=>'Actualizado']);
@@ -151,8 +152,10 @@ class historiaController extends Controller
     }
 
     public function agregarTratamiento(Request $request){
-        $at= new tratamiento;
-        $at->tratamiento=$request->tra;
+        $at= new farmaco;
+        $at->farmaco=$request->far;
+        $at->unidad=$request->uni;
+        $at->indicaciones=$request->ind;
         $at->consulta_id=$request->idc;
         $at->save();
         return Response()->json(['mensaje'=>'Actualizado']);

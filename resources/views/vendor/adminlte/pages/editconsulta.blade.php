@@ -453,43 +453,38 @@
                     <input type="text" class="form-control input-sm " id="ocultore" disabled>        
                     <input type="text" class="form-control input-sm" disabled value="OD" style="text-align: center;" >
                     <input type="text" class="form-control input-sm" disabled value="OI" style="text-align: center;">
-                    <input type="text" class="form-control input-sm" disabled value="OD Cerca">
-                    <input type="text" class="form-control input-sm" disabled value="OI Cerca">                                     
+                    <input type="text" class="form-control input-sm" disabled value="Cerca">                                
                   </div>
                   <div class="col-md-2">
                     <input type="text" class="form-control input-sm" disabled value="ESFERA" style="text-align: center;">
                     <input type="text" class="form-control input-sm" id="odesfera" name="odesfera" value="{{$h->odesfera}} ">
                     <input type="text" class="form-control input-sm" id="oiesfera" name="oiesfera" value="{{$h->oiesfera}}">
-                    <input type="text" class="form-control input-sm" id="odesferaC" name="odesferaC" value="{{$h->odesferaC}}">
-                    <input type="text" class="form-control input-sm" id="oiesferaC" name="oiesferaC" value="{{$h->oiesferaC}}">                             
+                    <input type="text" class="form-control input-sm" id="odesferaC" name="odesferaC" value="{{$h->odesferaC}}">                          
                   </div>
                   <div class="col-md-2">
                     <input type="text" class="form-control input-sm" disabled value="CILINDRO" style="text-align: center;">
                     <input type="text" class="form-control input-sm" id="odcilindro" name="odcilindro" value="{{$h->odcilindro}} ">
                     <input type="text" class="form-control input-sm" id="oicilindro" name="oicilindro" value="{{$h->oicilindro}} " >
-                    <input type="text" class="form-control input-sm" id="odcilindroC" name="odcilindroC" value="{{$h->odcilindroC}} ">
-                    <input type="text" class="form-control input-sm" id="oicilindroC" name="oicilindroC" value="{{$h->oicilindroC}} ">                             
+                    <input type="text" class="form-control input-sm" id="odcilindroC" name="odcilindroC" value="{{$h->odcilindroC}} ">                            
                   </div>
                   <div class="col-md-2">
                     <input type="text" class="form-control input-sm" disabled value="EJE" style="text-align: center;">
                     <input type="text" class="form-control input-sm" id="odeje" name="odeje" value="{{$h->odeje}}">
                     <input type="text" class="form-control input-sm" id="oieje" name="oieje" value="{{$h->oieje}}">
-                    <input type="text" class="form-control input-sm" id="odejeC" name="odejeC" value="{{$h->odejeC}}">
-                    <input type="text" class="form-control input-sm" id="oiejeC" name="oiejeC" value="{{$h->oiejeC}}">                   
+                    <input type="text" class="form-control input-sm" id="odejeC" name="odejeC" value="{{$h->odejeC}}">                  
                   </div>
                   <div class="col-md-2">
                     <input type="text" class="form-control input-sm" disabled value="AV" style="text-align: center;">
                     <input type="text" class="form-control input-sm" id="odav" name="odav" value="{{$h->odav}}">
                     <input type="text" class="form-control input-sm" id="oiav" name="oiav" value="{{$h->oiav}}">
                     <input type="text" class="form-control input-sm" id="odavC" name="odavC" value="{{$h->odavC}}">
-                    <input type="text" class="form-control input-sm" id="oiavC" name="oiavC" value="{{$h->oiavC}}">                             
                   </div>
                   <div class="col-md-2">
                     <input type="text" class="form-control input-sm" disabled value="DIP" style="text-align: center;">
                     <input type="text" class="form-control input-sm" id="oddip" name="oddip" value="{{$h->oddip}}">
                     <input type="text" class="form-control input-sm" id="oidip" name="oidip" value="{{$h->oidip}}">
                     <input type="text" class="form-control input-sm" id="oddipC" name="oddipC" value="{{$h->oddipC}}">
-                    <input type="text" class="form-control input-sm" id="oidipC" name="oidipC" value="{{$h->oidipC}}">                             
+                                      
                   </div>                                
                 </div>            
               </form>
