@@ -163,24 +163,32 @@ window.addEventListener('load', function(){
     });
     //Fin de la funcion para actualizar los pacientes para atencion
  
+    //Funcion para el tab de la fila OD
+    pasartab('odsc','oisc')
+    pasartab('odcc','oicc')
+    pasartab('odca','odsc')
+    pasartab('oisc','odcc')
+    pasartab('oicc','odca')
 
     //Funcion para el tab de la fila OD
-    pasartab('odesfera','oiesferaC')
-    pasartab('odcilindro','oicilindroC')
-    pasartab('odeje','oiejeC')
-    pasartab('odav','oiavC')
+    pasartab('odesfera','odesferaC')
+    pasartab('odcilindro','odcilindroC')
+    pasartab('odeje','odejeC')
+    pasartab('odav','odavC')
     pasartab('oddip','odesfera')
     //Funcion para el tab de la fila OI
     pasartab('oiesfera','odcilindro')
     pasartab('oicilindro','odeje')
     pasartab('oieje','odav')
-    pasartab('oiav','oiesfera')
+    pasartab('oiav','oddip')
+    pasartab('oidip','oiesfera')
     //Funcion para el tab de a fila OD Cerca
     pasartab('odesferaC','oicilindro')
     pasartab('odcilindroC','oieje')
     pasartab('odejeC','oiav')
     pasartab('odavC','oidip')
-    pasartab('oddipC','odesferaC')
+    
+    pasartab('oddipC','btnGu') 
     //Funcion para el tab de la fila OI Cerca
         
     pasartab('oiesferaC','odcilindroC')

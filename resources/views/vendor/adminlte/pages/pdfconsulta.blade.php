@@ -36,7 +36,8 @@
 	.titulo{
 		background-color: #140DAC;
 		color: white;
-		font-size: 12px;
+		font-weight: bold;
+		font-size: 11px;
 	}
 	.inptxt{
 		height: 17px;
@@ -44,7 +45,7 @@
 		border-left: 0px;
 		border-right: 0px;
 		border-bottom: 1px solid black;		
-		font-size: 12px;
+		font-size: 10px;
 	}
 	#txtnombre{
 		width: 390px;
@@ -157,7 +158,7 @@
 
 	.tblExa th, .tblExa td{
 	 border: 1px solid #000;
-	 width: 50px;
+	 width: 80px;
 	 text-align: center;
 	}
 	#ocu{
@@ -359,7 +360,7 @@
 			<table class="tblExa" id="tblexamen">
 				<thead>
 					<tr class="cbex">
-						<th style="height: 10px; border-top: 0px; border-left: 0px"></th>
+						<th style="height: 10px; border-top: 0px; border-left: 0px;"></th>
 						<th style="height: 10px; font-size: 10px;" >SC</th>
 						<th style="height: 10px; font-size: 10px;">CC</th>
 						<th style="height: 10px; font-size: 10px;">CA</th>
