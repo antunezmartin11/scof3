@@ -459,7 +459,15 @@ where cp.id_paciente=p.id and cp.id_compania=c.id and cp.id_paciente=:id',['id'=
     }
 
     public function getFarmaco(){
-        $far=DB::table('farmaco')->get();
+        $far=DB::table('farmaco')->groupBy('farmaco')->get();
+        return Response()->json($far);
+    }
+    public function getUnidad(){
+        $far=DB::table('farmaco')->groupBy('unidad')->get();
+        return Response()->json($far);
+    }
+    public function getIndicacion(){
+        $far=DB::table('farmaco')->groupBy('indicaciones')->get();
         return Response()->json($far);
     }
 }

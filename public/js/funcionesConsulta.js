@@ -3,6 +3,8 @@ window.addEventListener('load', function(){
 		guardart(e)
     });
     cargarfarmaco()
+    cargarUnidad()
+    cargarIndicacion()
     cargarDia()//carga los pacientes registrados para atencion en el dia
     listConsulta()
     //cargarfarmaco()
@@ -34,53 +36,22 @@ window.addEventListener('load', function(){
             });
         }
     });
-
-    function cargarfarmaco(){
-        token=$('#token').val();  
-        var f = new Array();
-        var ind = new Array();
+    function cargarUnidad(){//Funciona para cargar las sugerencias de unidades
+        token=$('#token').val(); 
         var un = new Array();
         $.ajax({
-            url:'farmaco',
+            url:'unidad',
             type:'GET',
             headers: {'X-CSRF-TOKEN': token},
             success: function(data){
                 for (let i = 0; i < data.length; i++) {
-                    if(data[i].farmaco==null){
-                        f.push(' ')
-                    }else{
-                        f.push(data[i].farmaco);
-                    }
                     if(data[i].unidad==null){
                         un.push(' ')
                     }else{
                         un.push(data[i].unidad);
                     }
-                    if(data[i].indicaciones==null){
-                        ind.push(' ')
-                    }else{
-                        ind.push(data[i].indicaciones);
-                    }
-                    
-                    
-                    
                 }
-                $('#far1').autocomplete({
-                    source:f,
-                    minLength: 3
-                })  
-                $('#far2').autocomplete({
-                    source:f,
-                    minLength: 3
-                }) 
-                $('#far3').autocomplete({
-                    source:f,
-                    minLength: 3
-                }) 
-                $('#far4').autocomplete({
-                    source:f,
-                    minLength: 3
-                }) 
+
                 $('#unid1').autocomplete({
                     source:un,
                     minLength: 2
@@ -97,6 +68,29 @@ window.addEventListener('load', function(){
                     source:un,
                     minLength: 2                
                 }) 
+            }, 
+            error: function(error){
+                alertify.error('Error cargando los farmacos')
+                console.log(error)
+            }    
+        })
+    }
+
+    function cargarIndicacion(){//Funciona para cargar las sugerencias de indicaciones
+        token=$('#token').val(); 
+        var ind = new Array();
+        $.ajax({
+            url:'indicacion',
+            type:'GET',
+            headers: {'X-CSRF-TOKEN': token},
+            success: function(data){
+                for (let i = 0; i < data.length; i++) {
+                    if(data[i].indicaciones==null){
+                        ind.push(' ')
+                    }else{
+                        ind.push(data[i].indicaciones);
+                    }
+                }
                 $('#ind1').autocomplete({
                     source:ind,
                     minLength: 3
@@ -111,6 +105,44 @@ window.addEventListener('load', function(){
                 }) 
                 $('#ind4').autocomplete({
                     source:ind,
+                    minLength: 3
+                }) 
+            }, 
+            error: function(error){
+                alertify.error('Error cargando los farmacos')
+                console.log(error)
+            }    
+        })
+    }
+    function cargarfarmaco(){//Funciona para cargar las sugerencias de farmacos
+        token=$('#token').val();  
+        var f = new Array();
+        $.ajax({
+            url:'farmaco',
+            type:'GET',
+            headers: {'X-CSRF-TOKEN': token},
+            success: function(data){
+                for (let i = 0; i < data.length; i++) {
+                    if(data[i].farmaco==null){
+                        f.push(' ')
+                    }else{
+                        f.push(data[i].farmaco);
+                    }
+                }
+                $('#far1').autocomplete({
+                    source:f,
+                    minLength: 3
+                })  
+                $('#far2').autocomplete({
+                    source:f,
+                    minLength: 3
+                }) 
+                $('#far3').autocomplete({
+                    source:f,
+                    minLength: 3
+                }) 
+                $('#far4').autocomplete({
+                    source:f,
                     minLength: 3
                 }) 
             }, 

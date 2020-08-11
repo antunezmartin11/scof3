@@ -108,6 +108,8 @@ Route::group(['middleware' => 'auth'], function () {
     route::get('historiasAntes/{idp}','consultaController@historiasAntes');
     route::delete('eliminarAtencion/{id}','atencionController@eliminarAtencion');
     route::get('farmaco','consultaController@getFarmaco');
+    route::get('unidad','consultaController@getUnidad');
+    route::get('indicacion','consultaController@getIndicacion');
     route::get('Consolidado','pagosController@Consolidado');
     route::get('getConsolidado/{id}/{fec1}/{fec2}','pagosController@getConsolidado');
     route::get('pagosFecha/{fecha}','pagosController@pagosporDia');

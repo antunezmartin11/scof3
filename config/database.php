@@ -56,10 +56,11 @@ return [
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
+            
             'strict' => true,
             'engine' => null,
             'modes'  => [
-                    'ONLY_FULL_GROUP_BY',
+                    //'ONLY_FULL_GROUP_BY',
                     'STRICT_TRANS_TABLES',
                     'NO_ZERO_IN_DATE',
                     'NO_ZERO_DATE',
