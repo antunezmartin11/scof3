@@ -52,7 +52,7 @@ class atencionController extends Controller
 
     }
     public function listaConsultaPacientes(){//devuelvo la lista de 3 pacientes para su atencion
-        $cnd=DB::table('atencion')->where([['fecha',Carbon::now()->toDateString()],['estado','pendiente'] ])->orderBy('id','desc')->get();
+        $cnd=DB::table('atencion')->where([['fecha',Carbon::now()->toDateString()]])->orderBy('id','desc')->get();
     
         return view('vendor.adminlte.pages.listaConsultaRecepcion')->with('cnd',$cnd);
     

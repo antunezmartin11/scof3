@@ -46,9 +46,23 @@ window.addEventListener('load', function(){
             headers: {'X-CSRF-TOKEN': token},
             success: function(data){
                 for (let i = 0; i < data.length; i++) {
-                    f.push(data[i].farmaco);
-                    un.push(data[i].unidad);
-                    ind.push(data[i].indicaciones);
+                    if(data[i].farmaco==null){
+                        f.push(' ')
+                    }else{
+                        f.push(data[i].farmaco);
+                    }
+                    if(data[i].unidad==null){
+                        un.push(' ')
+                    }else{
+                        un.push(data[i].unidad);
+                    }
+                    if(data[i].indicaciones==null){
+                        ind.push(' ')
+                    }else{
+                        ind.push(data[i].indicaciones);
+                    }
+                    
+                    
                     
                 }
                 $('#far1').autocomplete({
@@ -776,6 +790,7 @@ function asignarConsulta(id){
         oidip=$('#oidip').val()
         oddipC=$('#oddipC').val()
         oidipC=$('#oidipC').val()
+        procedimientotxt=$('#procedimientotxt').val()
         if(odesfera.length==0){
             odesfera=''
         }else{
@@ -956,6 +971,8 @@ function asignarConsulta(id){
                     cie2:cie2,
                     cie3:cie3,
                     cie4:cie4,
+                    //Procedimientos
+                    procedimientotxt:procedimientotxt,
                     //para la tabla de tratamiento
                     far1:far1,
                     far2:far2,

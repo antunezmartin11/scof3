@@ -227,6 +227,9 @@
 		width: 20px;
 		height: 30PX;
 	}
+	#proce{
+		width: 590px;
+	}
 	.cbre{
 		height: 10PX;
 		width: 20px;
@@ -526,12 +529,16 @@
 	 		@endif
 		
 		</div>
+		<div class="l16">
+			<label class="titulo">PROCEDIMIENTO:</label>
+			<input type="text" class="inptxt" id="proce" value="{{$d->procedimiento}}">
+		</div>
 		<label class="titulo">TRATAMIENTO:</label><br>
 		<div class="l19">
 			
 			<?php 
 			$cntr=DB::table('farmaco')->where('consulta_id','=',$v)->count();
-			$trm=DB::select("select @rownum:=@rownum+1 as numero,  concat(farmaco,' ',unidad,' ',indicaciones) as farmaco FROM farmaco f, (select @rownum:=0) r where consulta_id=:id",['id'=>$v]);
+			$trm=DB::select("select @rownum:=@rownum+1 as numero,  concat(ifnull(farmaco,' '),' ',ifnull(unidad,' '),' ',ifnull(indicaciones,' ')) as farmaco FROM farmaco f, (select @rownum:=0) r where consulta_id=:id",['id'=>$v]);
 			 ?>
 			 @if($cntr == 0)					
 					<label >1:</label><input type="text" class="inptxt trm"><br>		
@@ -601,7 +608,7 @@
 					</tr>
 					<tr class="conRefr">	
 								
-						<td>OD Cerca</td>
+						<td>Cerca</td>
 						<td>{{$d->odesferaC}} </td>
 						<td>{{$d->odcilindroC}} </td>
 						<td>{{$d->odejeC}} </td>

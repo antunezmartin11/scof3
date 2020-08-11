@@ -13,14 +13,36 @@
     @php
     @endphp
     @foreach($cnd as $cnd)
-    <tr style="font-size: 11px;">
+    @if($cnd->estado=="Atendido")
+    <tr style="font-size: 11px; background-color:#33A468; color: white" >
       <td>{{$cnd->dni}} </td>
       <td>{{$cnd->nombre}}</td>
       <td >{{$cnd->tipo}} </td>
       <td>{{$cnd->planmed}} </td>
       <td>{{$cnd->nconsulta}}</td>
-      <td><a href="#" class="btn btn-danger btn-sm" onclick="eliminarAtencion({{$cnd->id}})"><i class="fa fa-trash"></i></a></td>
+      @if($cnd->estado=="Atendido")
+        <td></td>
+      @else
+        <td><a href="#" class="btn btn-danger btn-sm" onclick="eliminarAtencion({{$cnd->id}})"><i class="fa fa-trash"></i></a></td>
+      @endif
+    
     </tr>
+    @else
+    <tr style="font-size: 11px;background-color: #F85B5B; color: white;">
+      <td>{{$cnd->dni}} </td>
+      <td>{{$cnd->nombre}}</td>
+      <td >{{$cnd->tipo}} </td>
+      <td>{{$cnd->planmed}} </td>
+      <td>{{$cnd->nconsulta}}</td>
+      @if($cnd->estado=="Atendido")
+        <td></td>
+      @else
+        <td><a href="#" class="btn btn-danger btn-sm" onclick="eliminarAtencion({{$cnd->id}})"><i class="fa fa-trash"></i></a></td>
+      @endif
+    
+    </tr>
+    @endif
+
       
     @endforeach
   </tbody>
