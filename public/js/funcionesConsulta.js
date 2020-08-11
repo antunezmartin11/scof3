@@ -301,6 +301,7 @@ function asignarConsulta(id){
             $('#chkBlef').attr('disabled',true)
             $('#chkSchirmer').attr('disabled',true)
             $('#chkRefra').attr('checked',true)
+            $('#far1').val('CORRECTORES')
         }else{
             $('#anm1').val('')
             $('#FonOjo').attr('disabled',false)

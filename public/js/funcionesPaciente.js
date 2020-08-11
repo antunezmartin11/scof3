@@ -65,10 +65,12 @@ $('#tipoServicio').change(function(){
   ts=$("#tipoServicio option:selected").index()
   if(ts!=1){   
     $('#compania').attr('disabled',false)
+    $('#parentesco').attr('disabled',false)
   }else{     
     $('#compania').attr('disabled',true)
     $('#parentesco > option[value="Titular"]').attr('selected', 'selected');    
-  }
+    $('#parentesco').attr('disabled',true)
+}
 });
 $('#abtn').click(function (){
   ida=$('#tipoServicio').val()
