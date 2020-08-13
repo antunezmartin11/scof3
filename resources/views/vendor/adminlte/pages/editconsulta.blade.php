@@ -351,7 +351,7 @@
                   <label class="control-label col-md-1">Diagnostico</label>
                   <div class="col-md-7">
                     <?php 
-                     $cie=DB::table('cie')->where('cod_cat','like','%h%')->get();
+                     $cie=DB::table('cie')->get();
 
                      $di=DB::select('SELECT (@rownum:=@rownum+1) AS rownum, d.* from (SELECT @rownum:=0) r, diagnostico d where d.consulta_id=:idc',['idc'=>$h->idc]);
                      $tr=DB::select('SELECT (@rownum:=@rownum+1) AS rownumt, t.* from (SELECT @rownum:=0) r, farmaco t where t.consulta_id=:idc',['idc'=>$h->idc]);   
