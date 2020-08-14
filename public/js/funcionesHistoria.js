@@ -299,7 +299,7 @@ function ejecutarActualizacion(diag, cie, idcie, callback){
 
 }  
 //Funcion de actualizar los tratamientos
-function ActualizarTratamiento(idt,fr,un,i){
+function ActualizarTratamiento(idt,fr,un,i,callback){
     token=$('#token').val()
 	$.ajax({
 	    url: '/ActualizarTratamiento',
@@ -311,15 +311,15 @@ function ActualizarTratamiento(idt,fr,un,i){
             i:i,
 	        idt: idt
 	    }, 
-	    success: function (respt) {    	    	
-	    	console.log(respt.mensaje)
+	    success: function (respt) {  
+            callback(respt)  	    	
 	    },
 	    error: function () {
 	        console.log('el error esta aca')
 	    }
 	});	
 }
-function EliminarTratamiento(idt){ 
+function EliminarTratamiento(idt,callback){ 
     token=$('#token').val()
 	$.ajax({
 	    url: '/EliminarTratamiento',
@@ -328,15 +328,15 @@ function EliminarTratamiento(idt){
 	    data:{
 	        idt:idt
 	    }, 
-	    success: function (respt) {    	    	
-	    	console.log(respt.mensaje)
+	    success: function (respt) {    	 
+            callback(respt)   	
 	    },
 	    error: function () {
 	        console.log('el error esta aca')
 	    }
 	});	
 }
-function AgregarTratamiento(far, uni, ind, idc){
+function AgregarTratamiento(far, uni, ind, idc,callback){
     token=$('#token').val()
 	$.ajax({
 	    url: '/AgregarTratamiento',
@@ -348,8 +348,8 @@ function AgregarTratamiento(far, uni, ind, idc){
 	        ind: ind, 
 	        idc: idc
 	    }, 
-	    success: function (respt) {    	    	
-	    	console.log(respt)
+	    success: function (respt) { 
+            callback(respt)   	    	
 	    },
 	    error: function () {
 	        console.log('el error esta aca')
@@ -357,21 +357,27 @@ function AgregarTratamiento(far, uni, ind, idc){
 	});	
 }
 //Determina que accion tomar
-function UpdateTratamientos(idt,fr,un,i){   
+function UpdateTratamientos(idt,fr,un,i,respt){   
 	if(idt!=null){
 		if(fr.length>1){			
-            ActualizarTratamiento(idt,fr, un,i)
+            ActualizarTratamiento(idt,fr, un,i,function (r){
+                respt(r)
+            })
 		}else{
-			EliminarTratamiento(idt)
+			EliminarTratamiento(idt, function(r){
+                respt(r)
+            })
 		} 
 	}else{
 		if(fr.length>1){
 			idcon=$('#idconsulta').val()
-			AgregarTratamiento(fr, un, i,idcon)
+			AgregarTratamiento(fr, un, i,idcon,function(r){
+                respt(r)
+            })
 		}
 	}
 }
-function UpTra(){//enlace para enviar los parametros y verificar que acciones tomar
+function UpTra(res){//enlace para enviar los parametros y verificar que acciones tomar
 	idt1=$('#idt1').val()
 	idt2=$('#idt2').val()
 	idt3=$('#idt3').val()
@@ -388,10 +394,19 @@ function UpTra(){//enlace para enviar los parametros y verificar que acciones to
     in2=$('#ind2').val()
     in3=$('#ind3').val()
     in4=$('#ind4').val()
-    UpdateTratamientos(idt1,fr1,un1,in1)
-    UpdateTratamientos(idt2,fr2,un2,in2)
-    UpdateTratamientos(idt3,fr3,un3,in3)
-    UpdateTratamientos(idt4,fr4,un4,in4)			
+    UpdateTratamientos(idt1,fr1,un1,in1,function(r){
+        res(r)
+    })
+    UpdateTratamientos(idt2,fr2,un2,in2,function(r){
+        res(r)
+    })
+    UpdateTratamientos(idt3,fr3,un3,in3,function(r){
+        res(r)
+    })
+    UpdateTratamientos(idt4,fr4,un4,in4,function(r){
+        res(r)
+    })	
+
 }
 function editarHistoria(){
 		token=$('#token').val()
@@ -822,42 +837,61 @@ function editarHistoria(){
                                     if(r0=='Actualizado'){
                                         swal('Actualizado','Tratamiento Actualizado','success')         
                                     }
-                                });   */  
-                                
-                                swal('Actualizado','Se Guardaron los cambios','success')
-                                c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
-                                a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
-                                b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO'); 
+                                });   */ 
 
                 			}else{
-                                console.log('No se actualizo el diagnostico')
-                                swal('Actualizado','Se Guardaron los cambios','success')
-                            
-                                c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
-                                a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
-                                b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO'); 
+                                //console.log('No se actualizo el diagnostico')
+    
                             }
-                            UpTra()
-                		});      
-                                          
+                            
+                        });     
+                        UpTra(function(re){
+                            if(re=='Actualizado'){
+
+                            }
+                        }) 
+                        swal('Actualizado','Se Guardaron los cambios','success')
+                            
+                        c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
+                        a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
+                        b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');                     
                 	}else{
                 		editarDiagnostico(function (re1){
                 			if(re1=='Actualizado'){
-                                swal('Actualizado','Los cambios se guardaron!!','success')	
-                                c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
-                                a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
-                                b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO'); 		
-                			}else{
+                                    UpTra(function(re){
+                                        if(re=='Actualizado'){
+                                            swal('Actualizado','Se Guardaron los cambios','success')
+                                            c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
+                                            a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
+                                            b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');     
+                                        }else{
+                                            swal('Actualizado','Se Guardaron los cambios','success')
+                                            c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
+                                            a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
+                                            b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');    
+                                        }
+                                    })                    
+                            }else{
+                                UpTra(function(re){
+                                    if(re=='Actualizado'){
+                                        swal('Actualizado','Se Guardaron los cambios','success')
+                                        c=window.open('../historia/'+nc+'/'+idpac, "Historia Clinica" , "width=750,height=990,scrollbars=NO")
+                                        a=window.open('../Receta/'+idpac+'/'+nc,'Receta de Paciente','location=no, directories=no,width=950,height=800,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');
+                                        b=window.open('../Refraccion/'+idpac+'/'+nc,'Refraccion del Paciente',' location=no, directories=no,width=950,height=800,left=240,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO');     
+                                    }else{
+                                        alertify.error('No se registraron cambios')
+                                    }
+                                })                               
                                 
-                                alertify.error('No se registraron cambios en el diagnostico')
                             }
                 		});  
-                        UpTra()
+                        
 						/*UpTra(function (r0){
 							if(r0=='Actualizado'){
 								swal('Actualizado','Tratamiento Actualizado','success')			
 							}
-						}); */                		
+                        }); */    
+                        		
                 	}
                 }, 
                 error: function(){

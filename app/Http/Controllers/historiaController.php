@@ -132,11 +132,11 @@ class historiaController extends Controller
         }
     }
     public function actualizarTratamiento(Request $request){
-        $t=DB::table('farmaco')->where('id','=',$request->idt)->update(['farmaco'=>$request->fr],['unidad'=>$request->un],['indicaciones'=>$request->i]);
+        $t=DB::table('farmaco')->where('id','=',$request->idt)->update(['farmaco'=>$request->fr,'unidad'=>$request->un,'indicaciones'=>$request->i]);
         if($t){
-            return Response()->json(['mensaje'=>'Actualizado']);     
+            echo "Actualizado";
         }else{
-            return Response()->json(['mensaje'=>'Error']);     
+            echo "Error";  
         }        
     }
 
@@ -144,9 +144,9 @@ class historiaController extends Controller
         $et=farmaco::FindOrFail($request->idt);
         $elt=$et->delete();
         if ($elt) {
-            return Response()->json(['mensaje'=>'Actualizado']);
+            echo "Actualizado";
         }else{
-            return Response()->json(['mensaje'=>'Error']);
+            echo "Error";
         }
         
     }
@@ -158,7 +158,11 @@ class historiaController extends Controller
         $at->indicaciones=$request->ind;
         $at->consulta_id=$request->idc;
         $at->save();
-        return Response()->json(['mensaje'=>'Actualizado']);
+        if($at){
+            echo "Actualizado";
+        }else{
+            echo "Error";
+        }
     }
     public function hisPac(Request $request){
         $datosH=DB::select('select p.id as idp, c.id as idc, p.nombre, c.nconsulta, c.fechacon from consulta c, paciente p, datoprevio dp where p.id=c.paciente_id and c.id=dp.consulta_id and p.id=:id',['id'=>$request->idp]);
