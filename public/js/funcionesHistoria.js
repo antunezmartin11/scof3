@@ -508,6 +508,7 @@ function editarHistoria(){
         oftal2=$('#oftal2').val()
         oftal3=$('#oftal3').val()
         oftal4=$('#oftal4').val()
+        procedimiento=$('#procedimientotxt').val()
         if(orbPar.length==0){
             orbPar=''
         }else{
@@ -632,7 +633,12 @@ function editarHistoria(){
             oftal4=''
         }else{
             oftal4=oftal4
-        }                                                                                                                                                                    
+        }    
+        if(procedimiento.length==0){
+            procedimientotxt=''
+        }else{
+            procedimiento=procedimiento
+        }                                                                                                                                                                
         //para la tabla de tratamiento                                     
         //para la tabla plan medico
         planMe=$('#planMe').val()
@@ -786,6 +792,7 @@ function editarHistoria(){
                     oftal2:oftal2,
                     oftal3:oftal3,
                     oftal4:oftal4,
+                    procedimiento: procedimiento,
                     //para la tabla plan medico
                     planMe:planMe,
                     //para la tabla de refraccion

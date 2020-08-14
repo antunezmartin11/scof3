@@ -351,7 +351,7 @@
 			<input type="text" class="inptxt" id="antc" value="{{$d->antecedentes1}} "><br>
 			<input type="text" class="inptxt" id="antc1" value="{{$d->antecedentes2}} ">
 			<label class="titulo">Plan Medico:</label>
-			<input type="text" class="inptxt" id="pmc" value="{{$d->atencion}} ">
+			<input type="text" class="inptxt" id="pmc" value="{{$d->planmedico}} ">
 			<label class="titulo">Usa Lente:</label>
 			<input type="text" class="inptxt" id="ult" value="{{$d->usalentes}} ">
 		</div>

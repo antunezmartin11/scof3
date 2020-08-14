@@ -424,6 +424,12 @@
                   </div>
                 </div> 
                 <div class="form-group">
+                <label class="control-label col-md-1">Procedimiento</label>
+                <div class="col-md-10">
+                  <input type="text" class="form-control input-sm" style="text-transform:uppercase;" id="procedimientotxt" name="procedimientotxt" maxlength="103" value="{{$h->procedimiento}}">
+                </div>
+              </div>
+                <div class="form-group">
                   <label class="control-label col-md-1">Farmaco</label>
                   <div class="col-md-3">
                     <input type="text" class="form-control input-sm" style="text-transform:uppercase;" id="far1" name="far1" autocomplete="on">

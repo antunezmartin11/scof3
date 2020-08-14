@@ -31,7 +31,7 @@ class consultaController extends Controller
         return view('vendor.adminlte.pages.consulta1');
     }
     public function historia($nc,$idp){
-        $datos=DB::select('select c.id as conid,p.nombre, p.dni, p.parentesco, p.id, ta.tipo, p.sexo, p.edad, p.telefono, p.direccion, p.email, c.nconsulta, c.fechacon, dp.te, dp.anamnesis1, dp.anamnesis2,
+        $datos=DB::select('select c.id as conid,p.nombre, p.dni, p.parentesco, p.id, ta.tipo, p.sexo, p.edad, p.telefono, p.direccion, p.email, c.nconsulta, c.fechacon, dp.te, dp.anamnesis1, dp.anamnesis2,pm.planmedico,
 dp.anamnesis3, dp.anamnesis4, dp.antecedentes1, dp.antecedentes2, dp.atencion, dp.usalentes, e1.odca, e1.odcc, e1.odsc, e1.oica, e1.oicc, e1.oisc, e2.orbitasparpados, e2.orbitasparpados1, e2.aparatolagrimal, e2.conjuntivaesclera, e2.conjuntivaesclera1, e2.cornea, e2.cornea1, e2.camaraanterior, e2.irispupila,
 e2.cristalino, e2.cristalino1, e2.vitreo, e2.motilidadocular, e2.motilidadocular1, e2.testschirmer, e2.but, e2.covertest, e2.oftalmoscopia1, e2.oftalmoscopia2, e2.oftalmoscopia3, e2.oftalmoscopia4, e2.campovisual,e2.tonometria, e2.od, e2.oi,e2.procedimiento, re.odesfera, re.oiesfera, re.odesferaC, re.odcilindro, re.oicilindro, re.odcilindroC, re.odeje, re.oieje, re.odejeC, re.odav, re.oiav, re.odavC, re.oddip, re.oidip, re.oddipC
 from paciente p, consulta c, tipo_seguro ts, tipo_atencion ta, datoprevio dp, examen1 e1, examen2 e2, planmedico pm, refraccion re where p.id=c.paciente_id and ts.id=p.tipo_seguro_id and c.tipo_atencion_id=ta.id and dp.consulta_id=c.id and e1.consulta_id=c.id and e2.consulta_id=c.id
