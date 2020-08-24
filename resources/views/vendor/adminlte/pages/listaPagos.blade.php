@@ -25,7 +25,8 @@
                     <td>{{$a->planmedico}}</td>
                     @if($a->planmedico=='MEDIDA DE LA VISTA')
                     <td class="oculto">{{$a->fechacon}}</td>
-                    <?php  
+                    <?php 
+                    $t1f=0; 
                       $cco=DB::select("select * from costo_compania where id_compania=(select id_compania from compania_paciente where id_paciente=:idp)",['idp'=>$a->id]);
                      ?>
                     <td>
@@ -151,6 +152,7 @@
                     </td>   
                     <td id="valorFi">
                       <?php
+                        
                         $tot=$totalP + $t1f;
                       ?>
                       {{$tot}}
