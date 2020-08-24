@@ -168,4 +168,14 @@ class historiaController extends Controller
         $datosH=DB::select('select p.id as idp, c.id as idc, p.nombre, c.nconsulta, c.fechacon from consulta c, paciente p, datoprevio dp where p.id=c.paciente_id and c.id=dp.consulta_id and p.id=:id',['id'=>$request->idp]);
             return view('vendor.adminlte.pages.listaHistorias1',compact('datosH'));        
     }
+
+    public function eliminarConsulta($idcon){
+        $eliminarCon=consulta::FindOrFail($idcon);
+        $elimicon=$eliminarCon->delete();
+        if($elimicon){
+            echo "Eliminado";
+        }else{
+            echo "Error";
+        }
+    }
 }

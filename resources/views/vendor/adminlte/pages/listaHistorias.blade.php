@@ -23,7 +23,7 @@
                 <td>{{$h->dni}}</td>
                 <td>{{$h->nconsulta}}</td>
                 <td>{{$h->fechacon}} </td>
-                <td align="center"><a class="btn btn-warning btn-sm dbt" onclick="editH({{$h->idc}})" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></a>&nbsp;<a class="btn btn-info btn-sm dbt" id="btnCarA" onclick="pdfh({{$h->nconsulta}},{{$h->idp}})" data-toggle="tooltip" data-placement="top" title="Imprimir Historia"><i class="fa fa-print"></i></a> &nbsp;<a class="btn bg-olive btn-sm" data-toggle="tooltip" data-placement="top" title="Imprimir Receta" onclick="receta({{$h->idp}},{{$h->nconsulta}})"><i class="fa fa-file-o"></i></a>&nbsp;<a class="btn bg-navy btn-sm" data-toggle="tooltip" data-placement="top" title="Imprimir Refraccion" onclick="refraccion({{$h->idp}},{{$h->nconsulta}})"><i class="fa fa-file-text"></i></a></td>                
+                <td align="center"><a class="btn btn-warning btn-sm dbt" onclick="editH({{$h->idc}})" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></a>&nbsp;<a class="btn btn-info btn-sm dbt" id="btnCarA" onclick="pdfh({{$h->nconsulta}},{{$h->idp}})" data-toggle="tooltip" data-placement="top" title="Imprimir Historia"><i class="fa fa-print"></i></a> &nbsp;<a class="btn bg-olive btn-sm" data-toggle="tooltip" data-placement="top" title="Imprimir Receta" onclick="receta({{$h->idp}},{{$h->nconsulta}})"><i class="fa fa-file-o"></i></a>&nbsp;<a class="btn bg-navy btn-sm" data-toggle="tooltip" data-placement="top" title="Imprimir Refraccion" onclick="refraccion({{$h->idp}},{{$h->nconsulta}})"><i class="fa fa-file-text"></i></a>&nbsp;<a onclick="eliminarConsulta({{$h->idc}},{{$h->dni}})" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar" "><i class="fa fa-trash"></i></a> </td>                
             </tr>
         @endforeach
 
@@ -44,5 +44,22 @@
 
     function refraccion(idpac, nc){
         window.open('Refraccion/'+idpac+'/'+nc,'ventana','width=595,height=420,scrollbars=NO,menubar=NO,resizable=NO,titlebar=NO,status=NO')
+    }
+    function eliminarConsulta(nc,dni){
+
+        $.ajax({
+            url:'eliminarConsulta/'+nc,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'delete',
+            success: function (re){
+                alertify.error("Consulta Eliminada")
+                searchDNI(dni)
+            },
+            error: function(re){
+                console.log(re)
+            }
+        })
     }
 </script>

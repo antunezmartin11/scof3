@@ -114,4 +114,5 @@ Route::group(['middleware' => 'auth'], function () {
     route::get('getConsolidado/{id}/{fec1}/{fec2}','pagosController@getConsolidado');
     route::get('pagosFecha/{fecha}','pagosController@pagosporDia');
     route::get('reportePago/{idc}','pagosController@reportePago');
+    route::delete('eliminarConsulta/{idc}','historiaController@eliminarConsulta');
 });
