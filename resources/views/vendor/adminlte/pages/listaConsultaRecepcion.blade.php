@@ -21,7 +21,7 @@
       <td>{{$cnd->planmed}} </td>
       <td>{{$cnd->nconsulta}}</td>
       @if($cnd->estado=="Atendido")
-        <td></td>
+      <td><a href="#" class="btn btn-danger btn-sm" onclick="eliminarAtencion({{$cnd->id}})"><i class="fa fa-trash"></i></a></td>
       @else
         <td><a href="#" class="btn btn-danger btn-sm" onclick="eliminarAtencion({{$cnd->id}})"><i class="fa fa-trash"></i></a></td>
       @endif
@@ -35,7 +35,7 @@
       <td>{{$cnd->planmed}} </td>
       <td>{{$cnd->nconsulta}}</td>
       @if($cnd->estado=="Atendido")
-        <td></td>
+      <td><a href="#" class="btn btn-danger btn-sm" onclick="eliminarAtencion({{$cnd->id}})"><i class="fa fa-trash"></i></a></td>
       @else
         <td><a href="#" class="btn btn-danger btn-sm" onclick="eliminarAtencion({{$cnd->id}})"><i class="fa fa-trash"></i></a></td>
       @endif
