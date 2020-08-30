@@ -28,7 +28,7 @@ class historiaController extends Controller
     	if($request->ajax()){
     		$datosH=DB::select('select p.id as idp, p.nombre, p.dni, c.nconsulta, c.id as idc, c.fechacon from paciente p, consulta c, datoprevio dp, examen1 e1, examen2 e2, planmedico pm, refraccion rf
 				where p.id=c.paciente_id and c.id=dp.consulta_id and c.id=e1.consulta_id and c.id=e2.consulta_id and c.id=pm.consulta_id and c.id=rf.consulta_id and 
-					p.dni=:dnipaciente',['dnipaciente'=>$request->dni]);
+					p.dni=:dnipaciente order by nconsulta asc' ,['dnipaciente'=>$request->dni]);
     		return view('vendor.adminlte.pages.listaHistorias',compact('datosH'));
     	}else{
     		echo "No se recibieron datos";

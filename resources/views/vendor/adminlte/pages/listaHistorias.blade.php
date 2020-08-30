@@ -8,7 +8,7 @@
     <thead>
         <tr>
             <th>N° H</th>
-            <th>Nombre Paciente</th>
+            <th>Nombre Paciente f</th>
             <th>DNI</th>
             <th>N° Consulta</th>
             <th>Fecha</th>            
