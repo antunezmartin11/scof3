@@ -389,8 +389,8 @@ where cp.id_paciente=p.id and cp.id_compania=c.id and cp.id_paciente=:id',['id'=
         $cant=consulta::where('paciente_id',$request->id)->count();//verifico si tiene registrado una consulta
 
         if($cant!=0){
-            $cn=consulta::where('paciente_id','=',$request->id)->get();
-            $cnn=($cn->last()->nconsulta)+1;
+            $cn=consulta::where('paciente_id','=',$request->id)->max('nconsulta');
+            $cnn=$cn+1;
         }else{
             $cnn=1;
         }
