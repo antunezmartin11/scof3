@@ -580,7 +580,6 @@
 				<thead>
 					<tr class="cbReff">
 						<th rowspan="4" style="font-size: 16px; font-weight: bold;">Refraccion</th>
-						<th></th>
 						<th>ESFERA</th>
 						<th>CILINDRO</th>
 						<th>EJE</th>
