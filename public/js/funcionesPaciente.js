@@ -586,7 +586,7 @@ function listaCompania(id){
 function CargarInputs(json){
     id=json.id
     token=$('#token').val()
-    if ($('#btnCargar').length) {//verifica si el boton esta en cargar o actualizar
+    if ($('#btnCargar'+json.dni+'').length) {//verifica si el boton esta en cargar o actualizar
         $('#nombre').val(json.nombre)
         $('#direccion').val(json.direccion)
         $('#fecnac').val(json.fecnac)
@@ -602,11 +602,11 @@ function CargarInputs(json){
             cargarCompanias(t);
         });
         $('#compania').val(json.idcom)
-        $('#btnCargar').prop('class', "btn btn-warning btn-sm");
-        $('#iedit').prop('class', 'fa fa-save')
-        $('#btnCargar').prop('id', "btnUp");
+        $('#btnCargar'+json.dni+'').prop('class', "btn btn-warning btn-sm");
+        $('#iedit'+json.dni+'').prop('class', 'fa fa-save')
+        $('#btnCargar'+json.dni+'').prop('id', "btnUp"+json.dni+"");
         
-    }else if($('#btnUp').length){
+    }else if($('#btnUp'+json.dni+'').length){
         alertify.confirm("Desea continuar con la actualizacion de datos del pacientes",function(e){
             if(e){
                 nombre= $('#nombre').val()
@@ -655,9 +655,9 @@ function CargarInputs(json){
             }else{
                 alertify.error('Accion cancelada')
                 $('#frmPaciente')[0].reset()
-                $('#btnUp').prop('class', "btn btn-danger btn-sm");
-                $('#iedit').prop('class', 'fa fa-edit')
-                $('#btnUp').prop('id', "btnCargar");
+                $('#btnUp'+json.dni+'').prop('class', "btn btn-danger btn-sm");
+                $('#iedit'+json.dni+'').prop('class', 'fa fa-edit')
+                $('#btnUp'+json.dni+'').prop('id', "btnCargar"+json.dni+"");
             }
 
 
