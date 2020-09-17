@@ -1,6 +1,7 @@
 <table border="1" class="table table-hover" id="tblConsulta">
   <thead>
     <tr style="background-color: #12A4B5; color: white;">
+      <th>N°</th>
       <th>DNI</th>
       <th>Nombres</th>
       <th>Tipo Atencion</th>
@@ -11,10 +12,16 @@
   </thead>
   <tbody>
     @php
+    $nn=0;
     @endphp
     @foreach($cnd as $cnd)
+      @php
+        $nn++;
+      @endphp
+    
     @if($cnd->estado=="Atendido")
     <tr style="font-size: 11px; background-color:#33A468; color: white" >
+      <td>{{$nn}}</td>
       <td>{{$cnd->dni}} </td>
       <td>{{$cnd->nombre}}</td>
       <td >{{$cnd->tipo}} </td>
@@ -29,6 +36,7 @@
     </tr>
     @else
     <tr style="font-size: 11px;background-color: #F85B5B; color: white;">
+      <td>{{$nn}}</td>
       <td>{{$cnd->dni}} </td>
       <td>{{$cnd->nombre}}</td>
       <td >{{$cnd->tipo}} </td>
