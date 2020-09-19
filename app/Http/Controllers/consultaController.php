@@ -453,7 +453,7 @@ where cp.id_paciente=p.id and cp.id_compania=c.id and cp.id_paciente=:id',['id'=
     }
 
     public function historiasAntes($idp){//devuelve la lista de historias por pacientes
-        $r=consulta::where('paciente_id',$idp)->get();
+        $r=consulta::where('paciente_id',$idp)->orderBy('fechaCon','asc')->get();
 
         return view('vendor.adminlte.pages.historiasantes')->with('r',$r);
     }
