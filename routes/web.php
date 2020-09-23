@@ -115,4 +115,5 @@ Route::group(['middleware' => 'auth'], function () {
     route::get('pagosFecha/{fecha}','pagosController@pagosporDia');
     route::get('reportePago/{idc}','pagosController@reportePago');
     route::delete('eliminarConsulta/{idc}','historiaController@eliminarConsulta');
+    route::get('prueba','consultacontroller@prueba');
 });

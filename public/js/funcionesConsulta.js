@@ -2,15 +2,18 @@ window.addEventListener('load', function(){
 	$(document).keydown(function (e){
 		guardart(e)
     });
+    
     cargarfarmaco()
     cargarUnidad()
     cargarIndicacion()
     cargarDia()//carga los pacientes registrados para atencion en el dia
     listConsulta()
+    cargarCie1()
     //cargarfarmaco()
     $('#talla').change(function(e){//Ejecuta la funcion para clcular el IMC
         IMC()
     })
+    
     cargarcie()
     //Funcion para cargar las histrias
     $('#hp').click(function(){
@@ -21,7 +24,6 @@ window.addEventListener('load', function(){
         }else{
             $('#historiaPaciente').modal('show')
             $.ajax({
-
                 url: 'listaHistoriaP',
                 data: {idp:idp},
                 type: 'post',
@@ -1185,6 +1187,97 @@ function eliminarAtencion(id){
   
     });
   }
+  function cambioCie1(v){
+    var c=$('#cie'+v).val()
+    $.ajax({
+            url:'cie1.json',
+            method:'get',
+            datatype:'json',
+            success: function (res){
+                for (let i = 0; i < res.length; i++) {
+                    //var cad={"num":res[i].num,"codigo":res[i].cod_cie,'nombre':res[i].desc_enf} 
+                    if(res[i].cod_cie==c){
+                        $('#diag'+v).val(res[i].desc_enf)
+                    }
+                }
+
+                },
+                error: function(re){
+                    console.log(re)
+                }
+            });        
+}
+function cambioNombre1(v){
+    var c=$('#diag'+v).val()
+    $.ajax({
+            url:'cie1.json',
+            method:'get',
+            datatype:'json',
+            success: function (res){
+                for (let i = 0; i < res.length; i++) {
+                    //var cad={"num":res[i].num,"codigo":res[i].cod_cie,'nombre':res[i].desc_enf} 
+                    if(res[i].desc_enf==c){
+                        $('#cie'+v).val(res[i].cod_cie)
+                    }
+                }
+
+                },
+                error: function(re){
+                    console.log(re)
+                }
+            });        
+}
+  function cargarCie1(){ 
+    var cod = new Array()
+    var nom = new Array()
+        $.ajax({
+            url:'cie1.json',
+            method:'get',
+            datatype:'json',
+            success: function (res){
+                for (let i = 0; i < res.length; i++) {
+                    var cad={"num":res[i].num,"codigo":res[i].cod_cie,'nombre':res[i].desc_enf}
+                    cod.push(res[i].cod_cie)
+                    nom.push(res[i].desc_enf)   
+                    }
+                $('#cie1').autocomplete({
+                    source: cod,
+                    minLength: 2
+                })
+                $('#cie2').autocomplete({
+                    source: cod,
+                    minLength: 2
+                })
+                $('#cie3').autocomplete({
+                    source: cod,
+                    minLength: 2
+                })
+                $('#cie4').autocomplete({
+                    source: cod,
+                    minLength: 2
+                })
+                $('#diag1').autocomplete({
+                    source: nom,
+                    minLength: 2
+                })
+                $('#diag2').autocomplete({
+                    source: nom,
+                    minLength: 2
+                })
+                $('#diag3').autocomplete({
+                    source: nom,
+                    minLength: 2
+                })
+                $('#diag4').autocomplete({
+                    source: nom,
+                    minLength: 2
+                })
+            },
+            error: function(re){
+                console.log(re)
+            }
+        });
+}
 function cargarcie(){
     token=$('#token').val()
     let c= new Array();

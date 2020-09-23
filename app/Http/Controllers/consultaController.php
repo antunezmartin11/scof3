@@ -470,4 +470,8 @@ where cp.id_paciente=p.id and cp.id_compania=c.id and cp.id_paciente=:id',['id'=
         $far=DB::table('farmaco')->groupBy('indicaciones')->get();
         return Response()->json($far);
     }
+
+    public function prueba(){
+        return view('vendor.adminlte.pages.prueba');
+    }
 }
