@@ -1064,14 +1064,14 @@ function asignarConsulta(id){
                         alertify.success('Consulta Registrada')
                         $('#frmDato')[0].reset()
                         $('#frmConsulta')[0].reset()                        
-                        $('#cie1').val('Seleccionar').trigger('change.select2');
-                        $('#diag1').val('Seleccionar').trigger('change.select2');
-                        $('#cie2').val('Seleccionar').trigger('change.select2');
-                        $('#diag2').val('Seleccionar').trigger('change.select2');                        
-                        $('#cie3').val('Seleccionar').trigger('change.select2');
-                        $('#diag3').val('Seleccionar').trigger('change.select2');                        
-                        $('#cie4').val('Seleccionar').trigger('change.select2');
-                        $('#diag4').val('Seleccionar').trigger('change.select2'); 
+                        $('#cie1').val('')
+                        $('#diag1').val('')
+                        $('#cie2').val('')
+                        $('#diag2').val('')                        
+                        $('#cie3').val('')
+                        $('#diag3').val('')                        
+                        $('#cie4').val('')
+                        $('#diag4').val('')
                         cargarDia() 
 
                         //Esta es una opcion
