@@ -101,10 +101,10 @@ function ModificarCompania(idA){
 	if(nombreC.length>1){
 		if(rucCo.length>=11){
 			if(Aseguradora!=0){
-				if(coFi.length>0){
-					if(coFi>0){
-						if(coVa.length>0){
-							if(coVa>0){
+				if(coFi.length>=0){
+					if(coFi>=0){
+						if(coVa.length>=0){
+							if(coVa>=0){
 								$.ajax({
 									url: 'compania/'+idA,
 									type: 'PUT',
@@ -219,4 +219,82 @@ function actualizarCostos(id){
 			alertify.error('Ocurrio un error al Actualizar')
 		}
 	});
+}
+function CargarCompaniasModal(idC){
+	limpiar()
+	token=token=$('#token').val()
+	$.ajax({
+		url: 'compania/'+idC+"/edit",
+		type: 'GET',
+		headers:{'X-CSRF-TOKEN': token},
+		success: function (data){		
+			$('#idCompa').val(data[0].id)
+			$('#nombreCo').val(data[0].nombre)
+			$('#rucom').val(data[0].ruc)
+			$('#idAseguradoraM').val(data[0].tipo_seguro_id).change()
+			$('#copaFM').val(data[0].copagoFijo)
+			$('#covaM').val(data[0].copagoVariable)					
+		}
+	});
+}
+function limpiar(){
+	$('#nombreCo').val("")
+	$('#rucom').val("")
+	$('#idAseguradoraM').val("Seleccionar").change()
+	$('#copaFM').val("")
+	$('#covaM').val("")			
+		
+}
+
+function modificarModal(){
+	nombreC=$('#nombreCo').val()
+	rucCo=$('#rucom').val()
+	Aseguradora=$('#idAseguradoraM').val()
+	coFi=$('#copaFM').val()
+	coVa=$('#covaM').val()
+	idC=$('#idCompa').val()
+	if(nombreC.length>0){//Verifico que el nombre no este vacio
+		if(Aseguradora!='0'){
+			if(coFi.length>=0){
+				if(coVa.length>=0){
+					$.ajax({
+						url: 'compania/'+idC,
+						type: 'PUT',
+						headers:{'X-CSRF-TOKEN': token},
+						data: {
+							nombreC : nombreC,
+							rucCo : rucCo,
+							Aseguradora : Aseguradora,
+							coFi : coFi,
+							coVa : coVa										 
+						},
+						success: function (resp){
+							if(resp=='Actualizado'){
+							cargarListaCompania();
+							$('#formModal')[0].reset()
+							$('#modalMod').modal('hide')
+							alertify.success('Compañia Actualizada')																					
+							}else{
+							alertify.log(resp)
+							$('#frmCompaniaC')[0].reset()	
+							}
+				
+						},
+						error: function (){
+							alertify.error('Ocurrio un error actualizando compañia')
+						}
+				
+					});
+				}else{
+					alertify.error('No se pueden ingresar valor negativos en el copago variable')
+				}
+			}else{
+				alertify.error('No se pueden ingresar valor negativos en el copago fijo')
+			}
+		}else{
+			alertify.error('Tiene que seleccionar una compania aseguradora')
+		}
+	}else{
+		alertify.error('El campo de nombre no puede estar vacio')
+	}
 }

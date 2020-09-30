@@ -7,6 +7,7 @@
     <thead>
         <tr align="center">
             <th >N°</th>
+            <th></th>
             <th >Nombre</th>
             <th >RUC</th>
             <th>Co. Fijo</th>
@@ -25,6 +26,7 @@
             @endphp
             <tr>
                 <td>{{$n}}</td>
+                <td>{{$r->id}} </td>
                 <td>{{$r->nombre}}</td>
                 <td align="center">{{$r->ruc}}</td>
                 <td align="center">S/. {{$r->copagoFijo}}</td>
@@ -35,9 +37,11 @@
                  @foreach ($ase as $a)
                     <td>{{$a->nombre_aseguradora}}</td>
                  @endforeach                
-                <td align="center"><a class="btn btn-danger btn-sm tblc" onclick="eliminarCompania('{{$r->id}}','{{$r->nombre}}')"><i class="fa fa-trash"></i></a>&nbsp <a class="btn btn-info btn-sm tblc" onclick="CargarCompanias('{{$r->id}}')"><i class="fa fa-edit"></i></a></td>
+                <td align="center"><a class="btn btn-danger btn-sm tblc" onclick="eliminarCompania('{{$r->id}}','{{$r->nombre}}')"><i class="fa fa-trash"></i></a>&nbsp;<a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalMod" onclick="CargarCompaniasModal('{{$r->id}}')"><i class="fa fa-edit"></i></a> </td>
             </tr>
         @endforeach
 
     </tbody>
 </table> 
+
+

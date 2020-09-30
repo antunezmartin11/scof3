@@ -104,6 +104,65 @@
     </div>         
 	</div>
 
+  <!-- Inicio Modal para modificar   -->
+
+
+  
+  <div class="modal fade" tabindex="-1" role="dialog" id="modalMod">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modificar Compañias</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="formModal">
+          <div class="form-group">
+            <input type="hidden" id="idCompa">
+            <label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="nombreCo" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">RUC</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="rucom" placeholder="RUC">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-2 control-label">Aseguradora</label>
+            <div class="col-sm-10">
+              <select id="idAseguradoraM" class="form-control input-sm">
+                  <option value="0">Seleccionar</option>
+                  @foreach ($as as $a)
+                  <option value="{{$a->id}}">{{$a->nombre_aseguradora}}</option>
+                  @endforeach
+                </select>            
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-sm-2 control-label">Copago Fijo</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="copaFM">
+            </div>
+            <label for="" class="col-sm-2 control-label">Copago Variable</label>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" id="covaM">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning" onclick="modificarModal()">Guardar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Fin Modal para modificar   -->
 @endsection
             
  

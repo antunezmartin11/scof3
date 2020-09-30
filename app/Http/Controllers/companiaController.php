@@ -42,7 +42,7 @@ class companiaController extends Controller
         }
     }
     public function cargarCompania(){
-        $lista=compania::join('costo_compania','compania.id','=','costo_compania.id_compania')->get();
+        $lista=DB::select('select c.*, cc.copagoFijo, cc.copagoVariable from compania c, costo_compania cc where c.id=cc.id_compania');
         return view('vendor.adminlte.pages.listaCompania', compact('lista'));
     }    
     public function modificarAseguradora(Request $request){        
@@ -146,7 +146,7 @@ class companiaController extends Controller
      */
     public function edit($id)
     {
-        $lista=DB::select('select c.nombre, c.ruc, c.tipo_seguro_id, cc.copagoFijo, cc.copagoVariable from compania c, costo_compania cc, tipo_seguro ts where c.id=cc.id_compania and ts.id=c.tipo_seguro_id and c.id=:id',['id'=>$id]);
+        $lista=DB::select('select c.id,c.nombre, c.ruc, c.tipo_seguro_id, cc.copagoFijo, cc.copagoVariable from compania c, costo_compania cc, tipo_seguro ts where c.id=cc.id_compania and ts.id=c.tipo_seguro_id and c.id=:id',['id'=>$id]);
         return response()->json($lista);
     }
 
