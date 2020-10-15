@@ -76,12 +76,18 @@ class pacienteController extends Controller
         $tipo="";
         $edad=" ";
         $dni="";
+        $fecnac="";
+        $idpaciente="";
         foreach ($paciente as $p) {
+            $idpaciente=$p->id;
             $nombre= $p->nombre;
             $tipo=$p->tipo_seguro->nombre_aseguradora;
             $edad=$p->edad;
             $dni=$p->dni;
+            $fecnac=$p->fecnac;
         }
+        $edadActual=Carbon::parse($fecnac)->age;
+        $upAge=$actualizar=DB::table('paciente')->where('id',$idpaciente)->update(['edad'=>$edadActual]);
         if($tipo=="PARTICULAR"){
             $planM=$request->planMedi;
             $tipoA=$request->tAtencion;
