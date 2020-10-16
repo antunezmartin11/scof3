@@ -152,7 +152,7 @@
                     </td>   
                     <td id="valorFi">
                       <?php
-                        
+                        $t1f=0;
                         $tot=$totalP + $t1f;
                       ?>
                       {{$tot}}

@@ -333,7 +333,6 @@ function AgregarParaConsulta(id){
             headers:{'X-CSRF-TOKEN': token},
             success: function (res){  
                 console.log( res) 
-
                 if(res=="Paciente Agregado Correctamente"){
                     alertify.alert("Agregado Correctamente")
 
