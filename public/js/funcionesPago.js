@@ -1,4 +1,3 @@
-const { type } = require("jquery");
 
 window.addEventListener('DOMContentLoaded', function(){    
     //Acciones a realizar al hacer click 
@@ -92,7 +91,7 @@ function quitarProcedimiento(idp){
         headers:{'X-CSRF-TOKEN': token},
         success: function (qp){
             if (qp=='Eliminado') {}
-            alertify.log('Procedimiento Eliminado')              
+            alertify.log('Procedimiento Eliminado '+qp)              
             CargarListaPagos()
         },
         error: function (){
@@ -117,12 +116,12 @@ function AgregarProcedimiento(pro){
                 alertify.success('Procedimiento Agregado')
                 CargarListaPagos()
             }else{
-                alertify.Error('Ocurrio un error')
+                alertify.error('Ocurrio un error'+res)
             }
             
         },
-        error: function (){
-            alertify.error('Error al agregar el procedimiento')
+        error: function (e){
+            alertify.error('Error al agregar el procedimiento' + e)
         }
     });
 }

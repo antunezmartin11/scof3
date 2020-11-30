@@ -78,7 +78,7 @@
                       </td>
                       @else
                       <td>
-                        <a href="#" class="btn btn-success center-block ac"  onclick="RegistroPago('{{$a->nombre_aseguradora}}','{{$a->nombreco}}','{{$a->planmedico}}','{{$totalP}}','{{$a->fechacon}}','{{$a->idc}}','{{$tot}}');" ><i class="fa fa-save"> Guardar</i><input type="hidden" value="{{$a->idc}}" id="idcos"></a>                      
+                        <a href="#" class="btn btn-success center-block ac"  onclick="RegistroPago('{{$a->nombre_aseguradora}}','{{$a->nombreco}}','{{$a->planmedico}}','{{$totalP}}','{{$a->fechacon}}','{{$a->idc}}','{{$tot}}',{{$a->idcompania}},{{$cc}});" ><i class="fa fa-save"> Guardar</i><input type="hidden" value="{{$a->idc}}" id="idcos"></a>                      
                       </td>
                       @endif
                     @else <!--Fin de condicion si -->

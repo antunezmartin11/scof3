@@ -10,6 +10,9 @@ use App\Modelos\tratamiento;
 use App\Modelos\pago;
 use App\Modelos\pago_procedimiento;
 use App\Exports\consolidado;
+use App\Modelos\costobase;
+use App\Modelos\costo_compania;
+use App\Modelos\compania;
 use Maatwebsite\Excel\Facades\Excel;
 
 class pagosController extends Controller
@@ -59,7 +62,7 @@ class pagosController extends Controller
             if($pr->procedimiento=='Refraccion'){
                 $cc=DB::table('costobase')->where('procedimiento','=',$pr->procedimiento)->get();
                 foreach ($cc as $cc) {
-                    $cfv=DB::select('select * from costo_compania cco, compania c where c.id=cco.id_compania and c.nombre=:nombre',[':nombre'=>$request->compania]);
+                    $cfv=DB::select('select * from costo_compania cco, compania c where c.id=cco.id_compania and c.nombre=:nombre',['nombre'=>$request->compania]);
                     foreach ($cfv as $cfv) {
                         $de=0;
                         $cop=0;
@@ -74,7 +77,7 @@ class pagosController extends Controller
             }else{
                 $cc=DB::table('costobase')->where('procedimiento','=',$pr->procedimiento)->get();
                 foreach ($cc as $cc) {
-                    $cfv=DB::select('select * from costo_compania cco, compania c where c.id=cco.id_compania and c.nombre=:nombre',[':nombre'=>$request->compania]);
+                    $cfv=DB::select('select * from costo_compania cco, compania c where c.id=cco.id_compania and c.nombre=:nombre',['nombre'=>$request->compania]);
                     foreach ($cfv as $cfv) {
                         $de=$cc->costo-($cc->costo*($cfv->copagoVariable/100));
                         $cop=$cc->costo*($cfv->copagoVariable/100);
@@ -201,10 +204,27 @@ class pagosController extends Controller
         return response()->json($pp);
     }
     public function quitarProcedimiento($idp){
+        $pro=procedimientos::where('id','=',$idp)->first();//obtengo los valores de la columna de procedimientos
         $bp=procedimientos::FindOrFail($idp);
         $elP=$bp->delete();
         if($elP){
-            echo "Eliminado";
+            $cnpago=pago::where('consulta_id','=',$pro['consulta_id'])->get();//verifico que hay un registro de pago con ese id de consulta
+            if($cnpago!=null){//verifico q devuelva resultados
+                $idPP=0;
+                foreach($cnpago as $cnpago){
+                    //consulta para obtener los valores del pago en la tabla pago_procedimiento
+                    $paPro=pago_procedimiento::where([['pago_id','=',$cnpago['id']],
+                    ['procedimiento','=',$pro['procedimiento']]])->first(); 
+                    $idPP=$paPro['id'];
+                }
+                $delPP=pago_procedimiento::FindOrFail($idPP);//verifica la existencia del registro
+                $elPP=$delPP->delete();//elimino el registro
+                if($elPP){//verifico si elimna dentro de la condicion de haber un registor de pago
+                    echo 'Eliminado';
+                }
+            }else{//si no hay registro de pago elimina los procedimientos
+                echo 'Eliminado';
+            } 
         }else{
             echo 'Error al eliminar procedimiento';
         }
@@ -216,9 +236,48 @@ class pagosController extends Controller
             $pr = new procedimientos;
             $pr->procedimiento=$pro;
             $pr->consulta_id=$idc;
-            $rpr=$pr->save();
+            $rpr=$pr->save();//Registra los datos en la tabla procedimiento
             if($rpr){
-                echo "Agregado";
+                //verifico si hay un registor para la tabla pago con el numero de consulta
+                $cnpago=pago::where('consulta_id','=',$request->idc)->exists();
+                $cpago=pago::where('consulta_id','=',$idc)->first();
+                if($cnpago){//Si hay un registro de pago
+                    $pp= new pago_procedimiento;
+                    $pp->procedimiento=$pro;
+                    $tipo=$cpago;
+                    $idpago=0;
+                    $copv=0;
+                    foreach ($cpago as $cpago) {
+                        $compania=$tipo['compania'];
+                        $idpago=$tipo['id'];//asigna el valor del id de pago a la variable
+                        //consulta para obtener los valores de la tabla compania
+                        $idcompaniaF=compania::where('nombre','=',$compania)->first();
+                        //consulta para obtener los valores del copavariable
+                        $vem=costo_compania::where('id_compania','=',$idcompaniaF['id'])->first();
+                        $copv=$vem['copagoVariable'];
+                    }
+                    
+
+                    //Obtener el costo de los procedimientos
+                    $cb=costobase::where('procedimiento','=',$request->pro)->first();
+                    //obtengo los valores para operaciones de acuerdo a la empresa
+    
+                    $deducible=$cb['costo']-($cb['costo']*($copv/100));//formula para obtener el valor del deducible
+                    $costoProcedimiento=($cb['costo']*($copv/100));//formula para obtener el valor del procedimiento 
+                    //asignacion de variables al modelo pago_procedimiento
+                    $pp->deducible=$deducible;
+                    $pp->costo=$cb['costo'];
+                    $pp->costoProcedimiento=$costoProcedimiento;
+                    $pp->pago_id=$idpago;
+                    $rpp=$pp->save();
+                    if($rpp){
+                        echo'Agregado';
+                    }else{
+                        echo 'error';
+                    }   
+                }
+
+
             }else{
                 echo "No se agrego";
             }
