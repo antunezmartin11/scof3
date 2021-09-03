@@ -30,7 +30,7 @@ class pagosController extends Controller
         return view('vendor.adminlte.pages.pagos', compact('a'));
     }
     public function pagosporDia($fecha){//Funcion que devuelve los registro de pago por dias especificos
-        $a=DB::select('select p.id, p.nombre, c.nconsulta,c.id as idc, c.fechacon, ts.nombre_aseguradora, pm.planmedico, co.nombre as nombreco, c.estadoPago as estado, c.id as idconsulta
+        $a=DB::select('select p.id, p.nombre, co.id as idcompania, c.nconsulta,c.id as idc, c.fechacon, ts.nombre_aseguradora, pm.planmedico, co.nombre as nombreco, c.estadoPago as estado, c.id as idconsulta
         from paciente p, consulta c, datoprevio dt, planmedico pm, tipo_seguro ts, compania co, compania_paciente cop 
         where ts.id=p.tipo_seguro_id 
         and p.id=c.paciente_id 
