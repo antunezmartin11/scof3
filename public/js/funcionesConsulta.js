@@ -1240,6 +1240,7 @@ function cambioNombre1(v){
                     cod.push(res[i].cod_cie)
                     nom.push(res[i].desc_enf)   
                     }
+                    console.log(res)
                 $('#cie1').autocomplete({
                     source: cod,
                     minLength: 2

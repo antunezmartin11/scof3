@@ -32,9 +32,9 @@
           </div>
       <div class="row">
         <div class="col-md-12">
-    @foreach($historia as $h)
+        @foreach($historia as $h)
       
-    @endforeach      
+        
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Modificar Consultas</h3>
@@ -370,57 +370,17 @@
                      @foreach ($pc as $pc)
                       <input type="hidden" value="{{$pc->procedimiento}}" id="pc{{$pc->rownump}}">
                      @endforeach
-                     <select name="diag1" id="diag1" class="form-control select2" style="width: 100%;" onchange="cambiocieH(1);">
-                      <option value="Seleccionar">Seleccionar</option>
-                     @foreach($cie as $c)                  
-                      <option value="{{$c->desc_enf}}">{{$c->desc_enf}}</option>                  
-                    @endforeach
-                    </select>
-                     <select name="diag2" id="diag2" class="form-control select2" style="width: 100%;" onchange="cambiocieH(2);">
-                      <option value="Seleccionar">Seleccionar</option>
-                     @foreach($cie as $c)                  
-                      <option value="{{$c->desc_enf}}">{{$c->desc_enf}}</option>                  
-                    @endforeach
-                    </select>                  
-                     <select name="diag3" id="diag3" class="form-control select2" style="width: 100%;" onchange="cambiocieH(3);">
-                      <option value="Seleccionar">Seleccionar</option>
-                     @foreach($cie as $c)                  
-                      <option value="{{$c->desc_enf}}">{{$c->desc_enf}}</option>                  
-                    @endforeach
-                    </select>
-                     <select name="diag4" id="diag4" class="form-control select2" style="width: 100%;" onchange="cambiocieH(4);">
-                      <option value="Seleccionar">Seleccionar</option>
-                     @foreach($cie as $c)                  
-                      <option value="{{$c->desc_enf}}">{{$c->desc_enf}}</option>                  
-                    @endforeach
-                    </select>                                                                        
+                     <input type="text" class="form-control" id="diag1" onchange="cambioNombre1(1)">
+                     <input type="text" class="form-control" id="diag2" onchange="cambioNombre1(2)">
+                     <input type="text" class="form-control" id="diag3" onchange="cambioNombre1(3)">
+                     <input type="text" class="form-control" id="diag4" onchange="cambioNombre1(4)">                                                                         
                   </div>
                   <label class="control-label col-md-1">CIE</label>
                   <div class="col-md-2">
-                     <select name="cie1" id="cie1" class="form-control select2" style="width: 100%;" onchange="cambiodescH(1);">
-                      <option value="Seleccionar">Seleccionar</option>
-                     @foreach($cie as $c)                  
-                      <option value="{{$c->cod_cie}}">{{$c->cod_cie}}</option>                  
-                    @endforeach
-                    </select>  
-                     <select name="cie2" id="cie2" class="form-control select2" style="width: 100%;" onchange="cambiodescH(2);">
-                      <option value="Seleccionar">Seleccionar</option>
-                     @foreach($cie as $c)                  
-                      <option value="{{$c->cod_cie}}">{{$c->cod_cie}}</option>                  
-                    @endforeach
-                    </select>  
-                     <select name="cie3" id="cie3" class="form-control select2" style="width: 100%;" onchange="cambiodescH(3);">
-                      <option value="Seleccionar">Seleccionar</option>
-                     @foreach($cie as $c)                  
-                      <option value="{{$c->cod_cie}}">{{$c->cod_cie}}</option>                  
-                    @endforeach
-                    </select>  
-                     <select name="cie4" id="cie4" class="form-control select2" style="width: 100%;" onchange="cambiodescH(4);">
-                      <option value="Seleccionar">Seleccionar</option>
-                     @foreach($cie as $c)                  
-                      <option value="{{$c->cod_cie}}">{{$c->cod_cie}}</option>                  
-                    @endforeach
-                    </select>                                                                           
+                      <input type="text" class="form-control" id="cie1" onchange="cambioCie1(1)">
+                      <input type="text" class="form-control" id="cie2" onchange="cambioCie1(2)">
+                      <input type="text" class="form-control" id="cie3" onchange="cambioCie1(3)">
+                      <input type="text" class="form-control" id="cie4" onchange="cambioCie1(4)">                                                    
                   </div>
                 </div> 
                 <div class="form-group">
@@ -501,6 +461,7 @@
           <!-- /.box -->
         <div id="upload-img" style="display: none;"></div>
         </div>
+        @endforeach  
       </div>
       <div class="row">
         <div id="historia">
