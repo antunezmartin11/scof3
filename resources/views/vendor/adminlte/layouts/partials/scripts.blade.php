@@ -7,12 +7,12 @@
 
 <script src="{{ asset('plugins/jquery.dataTables.js') }}"></script>        
 <script src="{{ asset('plugins/dataTables.bootstrap.js') }}"></script>        
-<script src="{{ asset('alertNuevo/alertify.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/alertify.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('Validator/js/bootstrapValidator.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/js/jquery-ui.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/EasyAutocomplete/jquery.easy-autocomplete.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/plugins/select2.full.min.js') }}" type="text/javascript"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ asset('/js/sweetalert.min.js')}}"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the

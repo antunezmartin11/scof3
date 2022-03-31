@@ -8,8 +8,8 @@
     <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/dataTables.bootstrap.css')}} " rel="stylesheet">
     <link href="{{ asset('/css/estiloCarga.css')}} " rel="stylesheet">
-    <link href="{{ asset('/alertNuevo/alertify.core.css') }}" rel="stylesheet">
-    <link href="{{ asset('/alertNuevo/alertify.default.css') }}" rel="stylesheet">    
+    <link href="{{ asset('/css/alertify/css/alertify.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/alertify/css/alertify.css') }}" rel="stylesheet">    
     <link href="{{ asset('/Validator/css/bootstrapValidator.css') }}" rel="stylesheet">  
      <link href="{{ asset('/js/jquery-ui.css') }}" rel="stylesheet">  
     <link href="{{ asset('/EasyAutocomplete/easy-autocomplete.min.css') }}" rel="stylesheet">  

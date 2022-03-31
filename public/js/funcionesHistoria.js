@@ -415,7 +415,9 @@ function UpTra(res){//enlace para enviar los parametros y verificar que acciones
 
 }
 function editarHistoria(){
-		token=$('#token').val()
+    alertify.confirm('Actualizar Historia', 'Desea guardar los cambios', 
+    function(){ 
+        token=$('#token').val()
 		idcon=$('#idconsulta').val()
         nc=$('#hcP').val()        
         ta=$('#Atencio').val()
@@ -904,6 +906,11 @@ function editarHistoria(){
                 	swal('Ocurrio un error','Al intentar modificar la historia','error')
                 }
             });
+        //alertify.success('Ok') 
+    }
+    , function(){ 
+        alertify.error('Puede seguir actualizando la historia')
+    });
 }
 //Funcion que permite capturar la ultima palabra y colocarla en el siguinete input
   function pasarInput(cantidad,inicial, siguiente){
