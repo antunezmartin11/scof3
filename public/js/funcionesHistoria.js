@@ -6,7 +6,7 @@ $(document).keydown(function (e){
         }else if(pg=='Editar'){
             guardart(e)
         }
-       
+        console.log('estoy aca')
 });     
   cargarCie1()
   cargaruslen()
@@ -41,9 +41,9 @@ function cargaruslen(){
 }
 
 function cargarCieH(num){//Funcion que devuelve el cie registrado para la historia
-	ci=$('#c'+num).val().trim()
+	ci=$('#c'+num).val()
 	if(ci!=null){
-		$('#cie'+num).val(ci)
+		$('#cie'+num).val(ci.trim())
         cambioCie1(num)
 	}	
     

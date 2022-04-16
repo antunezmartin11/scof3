@@ -1311,6 +1311,7 @@ function IMC(){
     var imcd=imc.toFixed(1)
     $('#imc').val(imcd)
 }
-
-
+validarInformacion(){
+    
+}
 //Fin de funcion para elininar pacientes de atencion

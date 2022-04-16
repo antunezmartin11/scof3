@@ -28,7 +28,7 @@ class consultaController extends Controller
      */
     public function index()
     {
-        return view('vendor.adminlte.pages.consulta1');
+        return view('vendor.adminlte.pages.consulta2');
     }
     public function historia($nc,$idp){
         $datos=DB::select('select c.id as conid,p.nombre, p.dni, p.parentesco, p.id, ta.tipo, p.sexo, p.edad, p.telefono, p.direccion, p.email, c.nconsulta, c.fechacon, dp.te, dp.anamnesis1, dp.anamnesis2,pm.planmedico,
