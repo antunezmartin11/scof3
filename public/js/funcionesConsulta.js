@@ -14,7 +14,7 @@ window.addEventListener('load', function(){
         IMC()
     })
     
-    cargarcie()
+ 
     //Funcion para cargar las histrias
     $('#hp').click(function(){
         idp=$('#nhis').val();
@@ -1240,7 +1240,6 @@ function cambioNombre1(v){
                     cod.push(res[i].cod_cie)
                     nom.push(res[i].desc_enf)   
                     }
-                    console.log(res)
                 $('#cie1').autocomplete({
                     source: cod,
                     minLength: 2
@@ -1279,27 +1278,7 @@ function cambioNombre1(v){
             }
         });
 }
-function cargarcie(){
-    token=$('#token').val()
-    let c= new Array();
-    $.ajax({
-        url:'cie',
-        type:'GET',
-        headers:{'X-CSRF-TOKEN': token},
-        success: function(res){
-            for (let i = 0; i < res.length; i++) {
-                c.push(res[i].desc_enf)
-            }            
-            $('#dg1').autocomplete({
-                source:c,
-                minLength: 3
-            })
-        },
-        error: function(er){
-            console.log(er)
-        }
-    });
-}
+
 //Funcion para calcular el indice de masa corporal
 
 function IMC(){
@@ -1311,7 +1290,6 @@ function IMC(){
     var imcd=imc.toFixed(1)
     $('#imc').val(imcd)
 }
-validarInformacion(){
-    
-}
+
+
 //Fin de funcion para elininar pacientes de atencion
