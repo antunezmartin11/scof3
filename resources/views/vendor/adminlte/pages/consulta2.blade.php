@@ -161,7 +161,7 @@
               <div class="form-group">
                 <label class="control-label col-md-1">Anamnesis</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control input-sm" id="anm1" name="anm1" style="text-transform:uppercase;" maxlength="468" onkeyup="validarInformacion()">
+                  <!--<input type="text" class="form-control input-sm" id="anm1" name="anm1" style="text-transform:uppercase;" maxlength="468" onkeyup="validarInformacion()">-->
                   <input type="text" class="form-control input-sm" id="anm1" name="anm1" style="text-transform:uppercase;" maxlength="108" onkeyup="pasarInput(108,'anm1','anm2')">
                   <input type="text" class="form-control input-sm" id="anm2" name="anm2" style="text-transform:uppercase;" maxlength="120" onkeyup="pasarInput(120,'anm2','anm3')">   
                   <input type="text" class="form-control input-sm" id="anm3" name="anm3" style="text-transform:uppercase;" maxlength="120" onkeyup="pasarInput(120,'anm3','anm4')">

@@ -6,7 +6,6 @@ $(document).keydown(function (e){
         }else if(pg=='Editar'){
             guardart(e)
         }
-        console.log('estoy aca')
 });     
   cargarCie1()
   cargaruslen()

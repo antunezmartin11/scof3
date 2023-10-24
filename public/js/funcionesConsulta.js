@@ -346,6 +346,9 @@ function asignarConsulta(id){
             $('#far1').val('CORRECTORES')
         }else{
             $('#anm1').val('')
+            $('#anm2').val('')
+            $('#anm3').val('')
+            $('#anm4').val('')
             $('#FonOjo').attr('disabled',false)
             $('#chkTono').attr('disabled',false)
             $('#chkECE').attr('disabled',false)
